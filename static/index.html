@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5" />
+  <meta name="author" content="Blp Gresik" />
+  <meta name="keywords"
+    content="Blp Gresik, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+  <link rel="canonical" href="#" />
+
+  <title>Blp Gresik</title>
+  <!--
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+	-->
+  <link href="css/app.css" rel="stylesheet" />
+  <link href="css/cardstyle.css" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.3/css/bootstrap-select.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+
+<body onload="load_data('2023','SELURUH SATUAN KERJA')">
+  <div class="wrapper">
+    <nav id="sidebar" class="sidebar js-sidebar">
+      <div class="sidebar-content js-simplebar">
+        <a class="sidebar-brand" href="index.html">
+          <span class="align-middle">BLP GRESIK</span>
+        </a>
+
+        <ul class="sidebar-nav">
+          <li class="sidebar-header">Pages</li>
+
+          <li class="sidebar-item active">
+            <a class="sidebar-link" href="index.html">
+              <i class="align-middle" data-feather="sliders"></i>
+              <span class="align-middle">Dashboard</span>
+            </a>
+          </li>
+
+          <li class="sidebar-header">Data list</li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="ui-buttons.html">
+              <i class="align-middle" data-feather="square"></i>
+              <span class="align-middle">Data Master</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="monitoring.html">
+              <i class="align-middle" data-feather="check-square"></i>
+              <span class="align-middle">Monitoring</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="penyedia.html">
+              <i class="align-middle" data-feather="align-left"></i>
+              <span class="align-middle">Penyedia</span>
+            </a>
+          </li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="jasa-konsultasi.html">
+              <i class="align-middle" data-feather="coffee"></i>
+              <span class="align-middle">Jasa Konsultasi</span>
+            </a>
+          </li>
+
+          <li class="sidebar-header">Plugins & Addons</li>
+
+          <li class="sidebar-item">
+            <a class="sidebar-link" href="charts-chartjs.html">
+              <i class="align-middle" data-feather="bar-chart-2"></i>
+              <span class="align-middle">Laporan</span>
+            </a>
+          </li>
+          <!--
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="maps-google.html">
+							<i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+						</a>
+					</li>
+					-->
+        </ul>
+
+        <div class="sidebar-cta">
+          <div class="sidebar-cta-content">
+            <strong class="d-inline-block mb-2">Kontak</strong>
+            <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
+            <div class="d-grid">
+              <a href="upgrade-to-pro.html" class="btn btn-primary">Kontak kami</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="main">
+      <nav class="navbar navbar-expand navbar-light navbar-bg">
+        <a class="sidebar-toggle js-sidebar-toggle">
+          <i class="hamburger align-self-center"></i>
+        </a>
+        <div class="row">
+          <div class="col-lg-4">
+            <select class="form-select" aria-label="Default select example" name="tahun" id="tahun">
+              <option value="" selected hidden>2023</option>
+              <option></option>
+            </select>
+          </div>
+          <div class="col-lg-8">
+            <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
+              <option value="" selected hidden>SELURUH SATUAN KERJA</option>
+              <option></option>
+            </select>
+          </div>
+        </div>
+
+      </nav>
+
+      <main class="content">
+        <div class="container-fluid p-0">
+          <h1 class="h3 mb-3"><strong>Analytics</strong> Dashboard</h1>
+
+          <div class="row">
+            <div class="col-xl-7 col-xxl-7 d-flex justify-content-between flex-wrap gap-3" id="tbody"></div>
+
+            <div class="col-xl-5 col-xxl-5">
+              <div class="card flex-fill w-100">
+                <div class="card-header">
+                  <h5 class="card-title mb-0">Graphic</h5>
+                </div>
+                <div class="card-body py-3">
+                  <div class="chart chart-sm">
+                    <canvas id="myChart"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="#">Penunjukan Langsung</a></h5>
+                <canvas id="getpl"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="seleksi.html">Pengadaan Seleksi</a></h5>
+                <canvas id="seleksi"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="tender.html">Tender</a></h5>
+                <canvas id="tender"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="pengadaanlangsung.html">Pengadaan Langsung</a></h5>
+                <canvas id="pengadaanlangsung"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="purchasing.html">E-Purchasing</a></h5>
+                <canvas id="purchase"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="swakelola.html">Swakelola</a></h5>
+                <canvas id="swakelola"></canvas>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
+              <div class="chart chart-sm">
+                <h5 class="card-title mb-0"><a href="pengecualian.html">Pengadaan Pengecualian</a></h5>
+                <canvas id="kecuali"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="row text-muted">
+            <div class="col-6 text-start">
+              <p class="mb-0">
+                <a class="text-muted" href="#" target="_blank"><strong>blp-gresik</strong></a>
+                -
+                <a class="text-muted" href="#" target="_blank"><strong></strong></a>
+                &copy;
+              </p>
+            </div>
+            <div class="col-6 text-end">
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a class="text-muted" href="#" target="_blank">Support</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-muted" href="#" target="_blank">Help Center</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-muted" href="#" target="_blank">Privacy</a>
+                </li>
+                <li class="list-inline-item">
+                  <a class="text-muted" href="#" target="_blank">Terms</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <!--
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var ctx = document
+        .getElementById("chartjs-dashboard-line")
+        .getContext("2d");
+      var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+      gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+      gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+      // Line chart
+      new Chart(document.getElementById("chartjs-dashboard-line"), {
+        type: "line",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              label: "Metode",
+              fill: true,
+              backgroundColor: gradient,
+              borderColor: window.theme.primary,
+              data: [
+                2115, 1562, 1584, 1892, 1587, 1923, 2566, 2448, 2805, 3438,
+                2917, 3327,
+              ],
+            },
+          ],
+        },
+        options: {
+          maintainAspectRatio: false,
+          legend: {
+            display: false,
+          },
+          tooltips: {
+            intersect: false,
+          },
+          hover: {
+            intersect: true,
+          },
+          plugins: {
+            filler: {
+              propagate: false,
+            },
+          },
+          scales: {
+            xAxes: [
+              {
+                reverse: true,
+                gridLines: {
+                  color: "rgba(0,0,0,0.0)",
+                },
+              },
+            ],
+            yAxes: [
+              {
+                ticks: {
+                  stepSize: 1000,
+                },
+                display: true,
+                borderDash: [3, 3],
+                gridLines: {
+                  color: "rgba(0,0,0,0.0)",
+                },
+              },
+            ],
+          },
+        },
+      });
+    });
+  </script>
+-->
+  <!-- jQuery -->
+  <!-- Popper Js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+  <!-- Hierarchy Select Js -->
+
+
+  <script>
+    $(document).ready(function () {
+      var satker = [
+        "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
+        "BADAN KESATUAN BANGSA DAN POLITIK",
+        "BADAN PENANGGULANGAN BENCANA DAERAH",
+        "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
+        "BADAN PERENCANAAN PEMBANGUNAN PENELITIAN DAN PENGEMBANGAN DAERAH",
+        "DINAS CIPTA KARYA PERUMAHAN DAN KAWASAN PERMUKIMAN",
+        "DINAS KELUARGA BERENCANA PEMBERDAYAAN PEREMPUAN DAN PERLINDANGAN ANAK KABUPATEN GRESIK",
+        "DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL",
+        "DINAS KESEHATAN",
+        "DINAS KOMUNIKASI DAN INFORMATIKA",
+        "DINAS KOPERASI USAHA MIKRO PERINDUSTRIAN DAN PERDAGANGAN KABUPATEN GRESIK",
+        "DINAS LINGKUNGAN HIDUP KABUPATEN GRESIK",
+        "DINAS PARIWISATA DAN EKONOMI KREATIF KEBUDAYAAN KEPEMUDAAN DAN OLAH RAGA",
+        "DINAS PEKERJAAN UMUM DAN TATA RUANG",
+        "DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN",
+        "DINAS PEMBERDAYAAN MASYARAKAT DAN DESA KABUPATEN GRESIK",
+        "DINAS PENANAMAN MODAL DAN PTSP KABUPATEN GRESIK",
+        "DINAS PENDIDIKAN",
+        "DINAS PERHUBUNGAN",
+        "DINAS PERIKANAN KABUPATEN GRESIK",
+        "DINAS PERPUSTAKAAN DAN KEARSIPAN KABUPATEN GRESIK",
+        "DINAS PERTANIAN KABUPATEN GRESIK",
+        "DINAS SOSIAL",
+        "DINAS TENAGA KERJA",
+        "INSPEKTORAT",
+        "KECAMATAN BALONGPANGGANG",
+        "KECAMATAN BUNGAH",
+        "KECAMATAN CERME",
+        "KECAMATAN DRIYOREJO",
+        "KECAMATAN DUDUK SAMPEYAN",
+        "KECAMATAN DUKUN",
+        "KECAMATAN GRESIK",
+        "KECAMATAN KEBOMAS",
+        "KECAMATAN MANYAR",
+        "KECAMATAN PANCENG",
+        "KECAMATAN SIDAYU",
+        "KECAMATAN UJUNGPANGKAH",
+        "KECAMATAN WRINGINANOM",
+        "SATUAN POLISI PAMONG PRAJA",
+        "SEKRETARIAT DAERAH",
+        "SEKRETARIAT DPRD"
+      ]
+      $("#satuankerja").select2({
+        data: satker
+      })
+    })
+
+    $(document).ready(function () {
+      var tahun = [
+        "2024", "2023", "2022", "2021"
+      ]
+      $("#tahun").select2({
+        data: tahun
+      })
+    })
+
+
+    $("#tahun").on("change", function () {
+
+      var text = $("#tahun option:selected").text();
+      var datasatuan = $("#satuankerja option:selected").text();
+      // console.log(datasatuan)
+      load_data(text, datasatuan)
+      dataChart(text, datasatuan)
+      Swakelola(text, datasatuan)
+      Seleksi(text, datasatuan)
+      Tender(text, datasatuan)
+      Langsung(text, datasatuan)
+      Purchase(text, datasatuan)
+      Kecuali(text, datasatuan)
+      Pl(text, datasatuan)
+
+    });
+    $("#satuankerja").on("change", function () {
+      var text = $("#tahun option:selected").text();
+      var datasatuan = $("#satuankerja option:selected").text();
+
+      load_data(text, datasatuan)
+      dataChart(text, datasatuan)
+      //getChartData()
+    })
+
+    function load_data(tahun, datasatuan) {
+      
+      Swakelola(tahun, datasatuan)
+      Seleksi(tahun, datasatuan)
+      Tender(tahun, datasatuan)
+      Langsung(tahun, datasatuan)
+      Purchase(tahun, datasatuan)
+      Kecuali(tahun, datasatuan)
+      Pl(tahun, datasatuan)
+     // Langsung(tahun, datasatuan)
+      // clear_data()
+      var data_api = ''
+      if (datasatuan == 'SELURUH SATUAN KERJA') {
+        data_api = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+      }
+      else {
+        data_api = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
+      }
+      //fetch("http://localhost:8000/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
+      fetch(data_api).then(res => res.json())
+        .then(res => {
+          str_body = ""
+          console.log(res)
+          res.data.forEach(r => {
+            str_body += `
+             
+              <div class="card card-style">
+											<div class="card-body">
+												<div class="row">
+													<div class="col mt-0">
+														<h5 class="card-title"><a href="${r["url"]}.html">${r["metode_pengadaan"]}</a></h5>
+													</div>
+
+													<div class="col-auto">
+														<div class="stat text-primary">
+															<i class="align-middle" data-feather="truck"></i>
+														</div>
+													</div>
+												</div>
+												<h1 class="mt-1 mb-3">${r["jumlah"]}</h1>
+												<div class="mb-0">
+													<span class="text-primary"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${r["total"].toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+													<span class="text-muted">Hps</span>
+												</div>
+											</div>
+										</div>
+
+            `
+          });
+          $("#tbody").html(str_body)
+        })
+    }
+
+    var metode_name = [], metode_pengadaan_total = [], metode_jumlah = []
+
+    async function dataChart(tahun, datasatuan) {
+     // console.log('informasi', tahun, datasatuan)
+      await getChartData(tahun, datasatuan)
+
+      const ctx = document.getElementById('myChart').getContext('2d');
+
+      const chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+
+        // The data for our dataset
+        data: {
+          labels: metode_name,
+          datasets: [{
+            label: 'Total Hps',
+            backgroundColor: 'blue',
+            borderColor: 'rgb(255, 99, 132)',
+            data: metode_pengadaan_total
+          },
+          {
+            label: 'Jumlah',
+            backgroundColor: 'pink',
+            borderColor: 'rgb(255, 99, 132)',
+            data: metode_jumlah
+          }
+          ]
+        },
+
+        // Configuration options go here
+        options: {
+          tooltips: {
+            mode: 'index'
+          }
+        }
+      })
+    }
+
+    dataChart('2023', 'SELURUH SATUAN KERJA')
+
+
+
+
+    async function getChartData(tahun, satuan) {
+
+      var api_ = ""
+      if (satuan == "SELURUH SATUAN KERJA") {
+         api_ = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun="+tahun
+       }
+      else {
+         api_ = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
+      }
+
+      //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
+
+      const response = await fetch(api_)
+      const barChatData = await response.json()
+
+      const total = barChatData.data.map((x) => x.total)
+      console.log(total)
+      const jumlah = barChatData.data.map((x) => x.jumlah)
+      const name = barChatData.data.map((x) => x.metode_pengadaan)
+
+      metode_pengadaan_total = total
+      metode_jumlah = jumlah
+      metode_name = name
+    }
+  </script>
+  <script src="js/grafik.js"></script>
+</body>
+
+</html>

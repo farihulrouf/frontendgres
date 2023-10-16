@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5" />
+    <meta name="author" content="Blp Gresik" />
+    <meta name="keywords"
+        content="Blp Gresik, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+    <link rel="canonical" href="#" />
+
+    <title>Blp Gresik</title>
+
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+</head>
+
+<body onload="loadData()">
+    <div class="wrapper">
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="index.html">
+                    <span class="align-middle">Blp Gresik</span>
+                </a>
+
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">Pages</li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="index.html">
+                            <i class="align-middle" data-feather="sliders"></i>
+                            <span class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">Data list</li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="ui-buttons.html">
+                            <i class="align-middle" data-feather="square"></i>
+                            <span class="align-middle">Data Master</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="pengadaan-barang.html">
+                            <i class="align-middle" data-feather="check-square"></i>
+                            <span class="align-middle">Pengadaan barang</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="pengadaan-konstruksi.html">
+                            <i class="align-middle" data-feather="align-left"></i>
+                            <span class="align-middle">Pengadaan konstruksi</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="jasa-konsultasi.html">
+                            <i class="align-middle" data-feather="coffee"></i>
+                            <span class="align-middle">Jasa konsultasi</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">Plugins & Addons</li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="charts-chartjs.html">
+                            <i class="align-middle" data-feather="bar-chart-2"></i>
+                            <span class="align-middle">Charts</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="sidebar-cta">
+                    <div class="sidebar-cta-content">
+                        <strong class="d-inline-block mb-2">Kontak</strong>
+                        <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary">Kontak kami</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main">
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
+                <a class="sidebar-toggle js-sidebar-toggle">
+                    <i class="hamburger align-self-center"></i>
+                </a>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <select class="form-select" aria-label="Default select example" name="tahun" id="tahun">
+                            <option value="" selected hidden>2023</option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-8">
+                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                            <option value="" selected hidden>SELURUH SATUAN KERJA</option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                
+            </nav>
+
+            <main class="content">
+                <div class="container-fluid p-0">
+                    <div class="mb-3">
+                        <h1 class="h3 d-inline align-middle">Pengadaan Pengecualian</h1>
+                        <a class="badge bg-dark text-white ms-2" href="#">
+                            List data Pengecualian
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            <table id="datatable" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Kode rup</th>
+                                        <th>Satuan Kerja</th>
+                                        <th>Nama paket</th>
+                                        <th>Metode Pengadaan.</th>
+                                        <th>Jenis</th>
+                                        <th>Tanggal Kontrak</th>
+                                        <th>Awal Pelaksanaan</th>
+                                        <th>Akhir Pelaksanaan</th>
+                                        <th>Nilai Kontrak</th>
+                                        <th>Progress</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted" href="https://Blp Gresik.io/"
+                                    target="_blank"><strong>Admin</strong></a>
+                                -
+                                <a class="text-muted" href="https://Blp Gresik.io/"
+                                    target="_blank"><strong>Admin</strong></a>
+                                &copy;
+                            </p>
+                        </div>
+                        <div class="col-6 text-end">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://Blp Gresik.io/" target="_blank">Support</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://Blp Gresik.io/" target="_blank">Help Center</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://Blp Gresik.io/" target="_blank">Privacy</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="text-muted" href="https://Blp Gresik.io/" target="_blank">Terms</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Hierarchy Select Js -->
+    <script src="js/hierarchy-select.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var satker = [
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KESATUAN BANGSA DAN POLITIK",
+                "BADAN PENANGGULANGAN BENCANA DAERAH",
+                "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
+                "BADAN PERENCANAAN PEMBANGUNAN PENELITIAN DAN PENGEMBANGAN DAERAH",
+                "DINAS CIPTA KARYA PERUMAHAN DAN KAWASAN PERMUKIMAN",
+                "DINAS KELUARGA BERENCANA PEMBERDAYAAN PEREMPUAN DAN PERLINDANGAN ANAK KABUPATEN GRESIK",
+                "DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL",
+                "DINAS KESEHATAN",
+                "DINAS KOMUNIKASI DAN INFORMATIKA",
+                "DINAS KOPERASI USAHA MIKRO PERINDUSTRIAN DAN PERDAGANGAN KABUPATEN GRESIK",
+                "DINAS LINGKUNGAN HIDUP KABUPATEN GRESIK",
+                "DINAS PARIWISATA DAN EKONOMI KREATIF KEBUDAYAAN KEPEMUDAAN DAN OLAH RAGA",
+                "DINAS PEKERJAAN UMUM DAN TATA RUANG",
+                "DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN",
+                "DINAS PEMBERDAYAAN MASYARAKAT DAN DESA KABUPATEN GRESIK",
+                "DINAS PENANAMAN MODAL DAN PTSP KABUPATEN GRESIK",
+                "DINAS PENDIDIKAN",
+                "DINAS PERHUBUNGAN",
+                "DINAS PERIKANAN KABUPATEN GRESIK",
+                "DINAS PERPUSTAKAAN DAN KEARSIPAN KABUPATEN GRESIK",
+                "DINAS PERTANIAN KABUPATEN GRESIK",
+                "DINAS SOSIAL",
+                "DINAS TENAGA KERJA",
+                "INSPEKTORAT",
+                "KECAMATAN BALONGPANGGANG",
+                "KECAMATAN BUNGAH",
+                "KECAMATAN CERME",
+                "KECAMATAN DRIYOREJO",
+                "KECAMATAN DUDUK SAMPEYAN",
+                "KECAMATAN DUKUN",
+                "KECAMATAN GRESIK",
+                "KECAMATAN KEBOMAS",
+                "KECAMATAN MANYAR",
+                "KECAMATAN PANCENG",
+                "KECAMATAN SIDAYU",
+                "KECAMATAN UJUNGPANGKAH",
+                "KECAMATAN WRINGINANOM",
+                "SATUAN POLISI PAMONG PRAJA",
+                "SEKRETARIAT DAERAH",
+                "SEKRETARIAT DPRD"
+            ]
+            $("#satuankerja").select2({
+                data: satker
+            })
+        })
+
+        $(document).ready(function () {
+            var tahun = [
+                "2024", "2023", "2022", "2021"
+            ]
+            $("#tahun").select2({
+                data: tahun
+            })
+        })
+
+
+    </script>
+    <script src="js/app.js"></script>
+    <script>
+        function loadData() {
+            getData('2023', 'SELURUH SATUAN KERJA')
+        }
+
+        $("#tahun").on("change", function () {
+
+            var text = $("#tahun option:selected").text();
+            var datasatuan = $("#satuankerja option:selected").text();
+            console.log(datasatuan)
+            getData(text, datasatuan)
+
+        });
+
+        $("#satuankerja").on("change", function () {
+
+            var text = $("#tahun option:selected").text();
+            var datasatuan = $("#satuankerja option:selected").text();
+            // console.log(datasatuan)
+            getData(text, datasatuan)
+
+        });
+
+        function getData(text, dinas) {
+            var api_ = ""
+            if (dinas == "SELURUH SATUAN KERJA") {
+                api_ = "https://info.dresstyleone.com/public/api/datapakets/getdata?tahun="+text+'&metode=Tender'
+            }
+            else {
+                api_ = "https://info.dresstyleone.com/public/api/datapakets/getdata?tahun="+text+'&metode=Tender'+'&satuan='+dinas
+            }
+
+            var table = $("#datatable").DataTable({
+                prerender: true,
+                destroy: true,
+                ajax:
+                
+                {
+                    "url": api_,
+                    "type": "GET",
+                    "dataType": "JSON"
+                },
+            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+        //}
+                columns: [
+                    { data: "kode_rup" },
+                    { data: "satuan_kerja" },
+                    { data: "nama_paket",
+                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html("<a href='detail-project.html'>"+oData.nama_paket+"</a>");
+                        }
+                     },
+                    { data: "metode_pengadaan" },
+                    { data: "jenis" },
+                    { data: "tgl_kontrak" },
+                    { data: "awal_pelaksanaan" },
+                    { data: "akhir_pelaksanaan" },
+                    { data: "nilai_kontrak" },
+                    { data: "progress" },
+                ],
+            });
+        }
+
+    </script>
+</body>
+
+</html>
