@@ -24,7 +24,7 @@
 
 </head>
 
-<body onload="loadData()">
+<body onload="onloadData()">
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
@@ -52,20 +52,25 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="penyedia.html">
+                        <a class="sidebar-link" href="monitoring.html">
                             <i class="align-middle" data-feather="check-square"></i>
+                            <span class="align-middle">Monitoring</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="penyedia.html">
+                            <i class="align-middle" data-feather="align-left"></i>
                             <span class="align-middle">Penyedia</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="monitoring.html">
-                            <i class="align-middle" data-feather="align-left"></i>
-                            <span class="align-middle">Monitoring</span>
+                        <a class="sidebar-link" href="jasa-konsultasi.html">
+                            <i class="align-middle" data-feather="coffee"></i>
+                            <span class="align-middle">Jasa konsultasi</span>
                         </a>
                     </li>
-
-             
 
                     <li class="sidebar-header">Plugins & Addons</li>
 
@@ -102,22 +107,25 @@
                         </select>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                        <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
                             <option value="" selected hidden>SELURUH SATUAN KERJA</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                
+
             </nav>
 
             <main class="content">
                 <div class="container-fluid p-0">
-                    <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Puchasing</h1>
-                        <a class="badge bg-dark text-white ms-2" href="pengadaan-barang.html">
-                            List data E-purchasing
-                        </a>
+
+
+                    <div class="row">
+
+                    </div>
+
+                    <div class="mb-6 mt-6" id="dataperencanaan">
+
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-12">
@@ -128,20 +136,35 @@
                                         <th>Satuan Kerja</th>
                                         <th>Nama paket</th>
                                         <th>Metode Pengadaan.</th>
-                                      
-                                        <th>Tanggal Kontrak</th>
-                                        <th>Awal Pelaksanaan</th>
-                                        <th>Akhir Pelaksanaan</th>
                                         <th>Nilai Kontrak</th>
-                                        <th>Progress</th>
+
                                     </tr>
                                 </thead>
                             </table>
                         </div>
                     </div>
                 </div>
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Options</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Modal content..</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </main>
-                
+
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
@@ -191,8 +214,14 @@
 
     <script>
         $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal({ show: true });
+            });
+
+        });
+        $(document).ready(function () {
             var satker = [
-                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
                 "BADAN KESATUAN BANGSA DAN POLITIK",
                 "BADAN PENANGGULANGAN BENCANA DAERAH",
                 "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
@@ -274,59 +303,81 @@
 
         });
 
-        function getData(text, dinas) {
-            var api_ = ""
-            if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'
-            }
-            else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'+'&satuan='+dinas
-            }
+        function onloadData() {
+            const datax = JSON.parse(localStorage.getItem('penyedia'));
+            console.log("info data", datax)
+            str_html = ""
+            getData()
+            //console.log(datax)
+            str_html += `
+            <div class="row">
+                    <div class="col-lg-10">
+                     <h1 class="h3 d-inline align-middle"> ${datax.nama}</h1>
+                        <a class="badge bg-dark text-white ms-2" href="#">
+                            npwp: ${datax.npwp}
+                        </a>	
+                    </div>
+                    <div class="col-lg-2">
+                        <a class="badge bg-success p-2 text-white ms-2" href="inputdata.html">
+                            Tambah data
+                        </a>	
+                     </div>
+                    </div>	
+  
+			`
+            $("#dataperencanaan").html(str_html)
 
+        }
+        function getData() {
+
+            const datax = JSON.parse(localStorage.getItem('penyedia'));
+            const api = 'http://localhost:8000/api/datapakets/detailpemenang?idpemenang='
+            //getData(datax.kode_rup)
+            //http://localhost:8000/api/datapakets/getwinpro?id=4
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
-                
+
                 {
-                    "url": api_,
+                    "url": "http://localhost:8000/api/datapakets/getwinpro?id=" + datax.id,
                     "type": "GET",
                     "dataType": "JSON"
                 },
-            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-        //}
+                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+
+                //}
                 columns: [
                     { data: "kode_rup" },
                     { data: "satuan_kerja" },
-                    { data: "nama_paket",
+                    {
+                        data: "nama_paket",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html('<a href="javascript:callModal(\''+oData.kode_rup+'\',\''+oData.nama_paket+'\',\''+oData.satuan_kerja+'\',\''+oData.nilai_kontrak+'\')">' +oData.nama_paket+'</a>');
+                            $(nTd).html('<a href="javascript:callModal(\'' + oData.kode_rup + '\',\'' + oData.nama_paket + '\',\'' + oData.satuan_kerja + '\',\'' + oData.nilai_kontrak + '\')">' + oData.nama_paket + '</a>');
                         }
-                     },
+                    },
                     // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
                     { data: "metode_pengadaan" },
-             
-                    { data: "tgl_kontrak" },
-                    { data: "awal_pelaksanaan" },
-                    { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
-                    { data: "progress" },
+
+
+                    { data: "nilai_kontrak" }
                 ],
             });
         }
-        function callModal(data,nama_paket, satker, nilai_kontrak, metode){
-           // console.log('fungsi di panggil', data)
-            const dataPaket = {kode_rup:data, nama_paket:nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode};
-          //  console.log(dataPaket.kode_rup)
-           // console.log(dataPaket)
+
+        function callModal(data, nama_paket, satker, nilai_kontrak, metode) {
+            // console.log('fungsi di panggil', data)
+            const dataPaket = { kode_rup: data, nama_paket: nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode };
+            //  console.log(dataPaket.kode_rup)
+            // console.log(dataPaket)
             localStorage.setItem('datapaket', JSON.stringify(dataPaket));
 
 
             //const datax = JSON.parse(localStorage.getItem('datapaket'));
 
 
-           // const datax = localStorage.getItem('datapaket');
+            // const datax = localStorage.getItem('datapaket');
             //console.log(datax.kode_rup)
             //const todos = [data, nama_paket, satker, nilai_kontrak ];
             //localStorage.setItem("inputValue", dataPaket);

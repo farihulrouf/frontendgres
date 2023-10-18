@@ -282,10 +282,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://info.dresstyleone.com/public/api/datapakets/getdata?tahun="+text+'&metode=Swakelola'
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Swakelola'
             }
             else {
-                api_ = "https://info.dresstyleone.com/public/api/datapakets/getdata?tahun="+text+'&metode=Swakelola'+'&satuan='+dinas
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Swakelola'+'&satuan='+dinas
             }
 
             var table = $("#datatable").DataTable({

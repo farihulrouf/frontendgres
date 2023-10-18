@@ -293,16 +293,16 @@
         function getData() {
             
             const datax = JSON.parse(localStorage.getItem('penyedia'));
-            const api='https://info.dresstyleone.com/public/api/datapakets/detailpemenang?idpemenang='
+            const api='http://localhost:8000/api/datapakets/detailpemenang?idpemenang='
 			//getData(datax.kode_rup)
-            //https://info.dresstyleone.com/public/api/datapakets/getwinpro?id=4
+            //http://localhost:8000/api/datapakets/getwinpro?id=4
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
                 
                 {
-                    "url": "https://info.dresstyleone.com/public/api/datapakets/getwinpro?id="+datax.id,
+                    "url": "http://localhost:8000/api/datapakets/getwinpro?id="+datax.id,
                     "type": "GET",
                     "dataType": "JSON"
                 },

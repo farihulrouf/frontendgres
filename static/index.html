@@ -50,7 +50,7 @@
           <li class="sidebar-header">Data list</li>
 
           <li class="sidebar-item">
-            <a class="sidebar-link" href="ui-buttons.html">
+            <a class="sidebar-link" href="datamaster.html">
               <i class="align-middle" data-feather="square"></i>
               <span class="align-middle">Data Master</span>
             </a>
@@ -428,10 +428,10 @@
       // clear_data()
       var data_api = ''
       if (datasatuan == 'SELURUH SATUAN KERJA') {
-        data_api = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+        data_api = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
       }
       else {
-        data_api = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
+        data_api = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
       }
       //fetch("http://localhost:8000/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
       fetch(data_api).then(res => res.json())
@@ -517,10 +517,10 @@
 
       var api_ = ""
       if (satuan == "SELURUH SATUAN KERJA") {
-         api_ = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun="+tahun
+         api_ = "http://localhost:8000/api/datapakets/getdatametode?tahun="+tahun
        }
       else {
-         api_ = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
+         api_ = "http://localhost:8000/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
       }
 
       //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun

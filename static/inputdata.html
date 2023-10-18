@@ -21,10 +21,11 @@
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 </head>
 
-<body onload="loadData()">
+<body onload="onloadData()">
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
@@ -52,20 +53,25 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="penyedia.html">
+                        <a class="sidebar-link" href="monitoring.html">
                             <i class="align-middle" data-feather="check-square"></i>
+                            <span class="align-middle">Monitoring</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="penyedia.html">
+                            <i class="align-middle" data-feather="align-left"></i>
                             <span class="align-middle">Penyedia</span>
                         </a>
                     </li>
 
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="monitoring.html">
-                            <i class="align-middle" data-feather="align-left"></i>
-                            <span class="align-middle">Monitoring</span>
+                        <a class="sidebar-link" href="jasa-konsultasi.html">
+                            <i class="align-middle" data-feather="coffee"></i>
+                            <span class="align-middle">Jasa konsultasi</span>
                         </a>
                     </li>
-
-             
 
                     <li class="sidebar-header">Plugins & Addons</li>
 
@@ -102,24 +108,36 @@
                         </select>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                        <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
                             <option value="" selected hidden>SELURUH SATUAN KERJA</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                
+
             </nav>
 
             <main class="content">
                 <div class="container-fluid p-0">
-                    <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Puchasing</h1>
-                        <a class="badge bg-dark text-white ms-2" href="pengadaan-barang.html">
-                            List data E-purchasing
-                        </a>
+
+
+                    <div class="row">
+                        <div class="col-lg-11">
+                            <select class="select22" style="width: 100%;"></select>
+                        </div>
+                        <div class="col-lg-1">
+                            <input type="button" class="btn btn-success" id="add" value="Add"
+                                onclick="Javascript:addRow()"></td>
+                        </div>
+
+                    </div>
+                   
+                    <div class="mb-6 mt-6" id="dataperencanaan">
+
                     </div>
                     <div class="row">
+                        <!--
+                            
                         <div class="col-12 col-lg-12">
                             <table id="datatable" class="display" cellspacing="0" width="100%">
                                 <thead>
@@ -128,20 +146,36 @@
                                         <th>Satuan Kerja</th>
                                         <th>Nama paket</th>
                                         <th>Metode Pengadaan.</th>
-                                      
-                                        <th>Tanggal Kontrak</th>
-                                        <th>Awal Pelaksanaan</th>
-                                        <th>Akhir Pelaksanaan</th>
                                         <th>Nilai Kontrak</th>
-                                        <th>Progress</th>
+
                                     </tr>
                                 </thead>
                             </table>
                         </div>
+                        -->
+
+                        <table id="myTableData" class="table">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Nama</th>
+                                    <th>Kode</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="mytabledata">
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+
                     </div>
                 </div>
+
+
             </main>
-                
+
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
@@ -177,6 +211,8 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -191,8 +227,41 @@
 
     <script>
         $(document).ready(function () {
+            $("select.select22").select2({
+                ajax: {
+
+                    //url: "https://api.github.com/search/repositories",
+                    url: "http://localhost:8000/api/datapakets/getdata?tahun=2023",
+                    dataType: 'json',
+                    data: (params) => {
+                        return {
+                            s: params.term,
+                        }
+                    },
+                    processResults: (data, params) => {
+                        //console.log("ini data", data)
+                        const results = data.data.map(item => {
+                            return {
+                                id: item.kode_rup,
+                                text: item.kode_rup + " | " + item.nama_paket,
+                            };
+                        });
+                        return {
+                            results: results,
+                        }
+                    },
+                },
+            });
+        })
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal({ show: true });
+            });
+
+        });
+        $(document).ready(function () {
             var satker = [
-                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
                 "BADAN KESATUAN BANGSA DAN POLITIK",
                 "BADAN PENANGGULANGAN BENCANA DAERAH",
                 "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
@@ -265,6 +334,27 @@
 
         });
 
+        $("#tahun").on("change", function () {
+
+            var text = $("#tahun option:selected").text();
+            var datasatuan = $("#satuankerja option:selected").text();
+            console.log(datasatuan)
+            getData(text, datasatuan)
+
+        });
+
+
+        $(".select22").on("change", function () {
+
+            var text = $(".select22 option:selected").text();
+            //var datasatuan = $("#satuankerja option:selected").text();
+            console.log(text)
+            //getData(text, datasatuan)
+
+        });
+
+
+
         $("#satuankerja").on("change", function () {
 
             var text = $("#tahun option:selected").text();
@@ -274,63 +364,204 @@
 
         });
 
-        function getData(text, dinas) {
-            var api_ = ""
-            if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'
-            }
-            else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'+'&satuan='+dinas
-            }
+        function onloadData() {
+            const datax = JSON.parse(localStorage.getItem('penyedia'));
+            console.log("info data", datax)
+            str_html = ""
+            getData()
+            //console.log(datax)
+            str_html += `
+                    <div class="row">
+                    <div class="col-lg-10">
+                     <h1 class="h3 d-inline align-middle"> ${datax.nama}</h1>
+                        <a class="badge bg-dark text-white ms-2" href="#">
+                            npwp: ${datax.npwp}
+                        </a>
+                    </div>
+                    <div class="col-lg-2">
+                        <input type="button" class="btn btn-success" id="postdata" value="postdata"
+                            onclick="Javascript:postData()"></input>
+                     </div>
+                    </div>	
 
+			`
+            $("#dataperencanaan").html(str_html)
+
+        }
+        function getData() {
+
+            const datax = JSON.parse(localStorage.getItem('penyedia'));
+            const api = 'http://localhost:8000/api/datapakets/detailpemenang?idpemenang='
+            //getData(datax.kode_rup)
+            //http://localhost:8000/api/datapakets/getwinpro?id=4
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
-                
+
                 {
-                    "url": api_,
+                    "url": "http://localhost:8000/api/datapakets/getwinpro?id=" + datax.id,
                     "type": "GET",
                     "dataType": "JSON"
                 },
-            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-        //}
+                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+
+                //}
                 columns: [
                     { data: "kode_rup" },
                     { data: "satuan_kerja" },
-                    { data: "nama_paket",
+                    {
+                        data: "nama_paket",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html('<a href="javascript:callModal(\''+oData.kode_rup+'\',\''+oData.nama_paket+'\',\''+oData.satuan_kerja+'\',\''+oData.nilai_kontrak+'\')">' +oData.nama_paket+'</a>');
+                            $(nTd).html('<a href="javascript:callModal(\'' + oData.kode_rup + '\',\'' + oData.nama_paket + '\',\'' + oData.satuan_kerja + '\',\'' + oData.nilai_kontrak + '\')">' + oData.nama_paket + '</a>');
                         }
-                     },
+                    },
                     // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
                     { data: "metode_pengadaan" },
-             
-                    { data: "tgl_kontrak" },
-                    { data: "awal_pelaksanaan" },
-                    { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
-                    { data: "progress" },
+
+
+                    { data: "nilai_kontrak" }
                 ],
             });
         }
-        function callModal(data,nama_paket, satker, nilai_kontrak, metode){
-           // console.log('fungsi di panggil', data)
-            const dataPaket = {kode_rup:data, nama_paket:nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode};
-          //  console.log(dataPaket.kode_rup)
-           // console.log(dataPaket)
+
+        function callModal(data, nama_paket, satker, nilai_kontrak, metode) {
+            // console.log('fungsi di panggil', data)
+            const dataPaket = { kode_rup: data, nama_paket: nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode };
+            //  console.log(dataPaket.kode_rup)
+            // console.log(dataPaket)
             localStorage.setItem('datapaket', JSON.stringify(dataPaket));
 
 
             //const datax = JSON.parse(localStorage.getItem('datapaket'));
 
 
-           // const datax = localStorage.getItem('datapaket');
+            // const datax = localStorage.getItem('datapaket');
             //console.log(datax.kode_rup)
             //const todos = [data, nama_paket, satker, nilai_kontrak ];
             //localStorage.setItem("inputValue", dataPaket);
             window.location.href = "detail-project.html";
+        }
+    </script>
+    <script>
+        function addRow() {
+
+            //var myName = "data dua";
+            var myName = $(".select22 option:selected").text();
+
+
+            const koderup = myName.substring(0, myName.indexOf('|'));
+
+            //console.log("The substring before the specific character is:", subBefore);
+            const nama_paket = myName.slice(myName.indexOf('|') + 1);
+            console.log(nama_paket)
+            // var myName = document.getElementById("name");
+            var age = document.getElementById("age");
+            var table = document.getElementById("myTableData");
+
+            var rowCount = table.rows.length;
+            var row = table.insertRow(rowCount);
+
+            row.insertCell(0).innerHTML = '<input type="button" class="btn btn-danger" value = "Delete" onClick="Javacsript:deleteRow(this)">';
+            row.insertCell(1).innerHTML = nama_paket;
+            row.insertCell(2).innerHTML = koderup;
+
+        }
+
+        function deleteRow(obj) {
+
+            var index = obj.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("myTableData");
+            table.deleteRow(index);
+
+        }
+
+        function addTable() {
+
+            var myTableDiv = document.getElementById("myDynamicTable");
+
+            var table = document.createElement('TABLE');
+            table.border = '1';
+
+            var tableBody = document.createElement('TBODY');
+            table.appendChild(tableBody);
+
+            for (var i = 0; i < 3; i++) {
+                var tr = document.createElement('TR');
+                tableBody.appendChild(tr);
+
+                for (var j = 0; j < 4; j++) {
+                    var td = document.createElement('TD');
+                    td.width = '75';
+                    td.appendChild(document.createTextNode("Cell " + i + "," + j));
+                    tr.appendChild(td);
+                }
+            }
+            myTableDiv.appendChild(table);
+
+        }
+        function postData() {
+
+            /* let oTable = document.getElementById('myTableData');
+             let data = [...oTable.rows].map(t => [...t.children].map(u => u.innerText))
+             console.log(data)
+             */
+            var tblhdr = $('table#myTableData th').map(function () {
+                return $(this).text();
+            }).get();
+
+            // console.log(tblhdr);
+
+            var tbl = $('table#myTableData tbody tr').map(function (idx, el) {
+                var td = $(el).find('td');
+                var obj = { id: idx + 1 };
+
+                //Can work on number of columns
+                for (var i = 0; i < tblhdr.length; i++) {
+                    obj[tblhdr[i]] = td.eq(i).text();
+                }
+
+                return obj;
+            }).get();
+            const datax = JSON.parse(localStorage.getItem('penyedia'));
+          
+            for (i = 1; i < tbl.length; i++) {
+               // console.log("print data", tbl[i].Kode)
+              
+                fetch("http://localhost:8000/api/datapakets/postdata", {
+
+                   
+                    method: "POST",
+
+                    body: JSON.stringify({
+                        kode_rup: tbl[i].Kode,
+                        id: datax.id,
+                    }),
+
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                })
+
+                    .then(response => response.json())
+                    .then(json => console.log(json));
+
+                if(i== tbl.length){
+                    console.log("selesai")
+                }
+
+             
+            }
+            
+           // window.location.href = "detail-master-penyedia.html";
+          
+        }
+
+        function load() {
+
+            console.log("Page load finished");
+
         }
     </script>
 </body>

@@ -54,13 +54,13 @@ async function getChartSwakelola(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getswakelola?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getswakelola?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getswakelola?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getswakelola?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -135,13 +135,13 @@ async function getChartSeleksi(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getseleksi?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getseleksi?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getseleksi?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getseleksi?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -217,13 +217,13 @@ async function getChartTender(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getender?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getender?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getender?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getender?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -298,13 +298,13 @@ async function getChartLangsung(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpengadaanlangsung?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getpengadaanlangsung?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpengadaanlangsung?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getpengadaanlangsung?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -379,13 +379,13 @@ async function getChartPurchase(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpuchas?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getpuchas?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpuchas?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getpuchas?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -460,13 +460,13 @@ async function getKecuali(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getkecuali?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getkecuali?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getkecuali?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getkecuali?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()
@@ -541,13 +541,13 @@ async function getPl(tahun, satuan) {
 
     var api_ = ""
     if (satuan == "SELURUH SATUAN KERJA") {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpl?tahun="+tahun
+       api_ = "http://localhost:8000/api/datapakets/getpl?tahun="+tahun
      }
     else {
-       api_ = "https://info.dresstyleone.com/public/api/datapakets/getpl?tahun="+tahun+'&sk='+satuan
+       api_ = "http://localhost:8000/api/datapakets/getpl?tahun="+tahun+'&sk='+satuan
     }
 
-    //const apiUrl = "https://info.dresstyleone.com/public/api/datapakets/getdatametode?tahun=" + tahun
+    //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
 
     const response = await fetch(api_)
     const barChatData = await response.json()

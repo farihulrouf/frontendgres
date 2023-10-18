@@ -52,20 +52,26 @@
                     </li>
 
                     <li class="sidebar-item active">
-                        <a class="sidebar-link" href="penyedia.html">
-                            <i class="align-middle" data-feather="check-square"></i>
-                            <span class="align-middle">Penyedia</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
                         <a class="sidebar-link" href="monitoring.html">
-                            <i class="align-middle" data-feather="align-left"></i>
+                            <i class="align-middle" data-feather="check-square"></i>
                             <span class="align-middle">Monitoring</span>
                         </a>
                     </li>
 
-             
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="masterpenyedia.html">
+                            <i class="align-middle" data-feather="align-left"></i>
+                            <span class="align-middle">Penyedia</span>
+                        </a>
+                    </li>
+                    <!--
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="jasa-konsultasi.html">
+                            <i class="align-middle" data-feather="coffee"></i>
+                            <span class="align-middle">Jasa konsultasi</span>
+                        </a>
+                    </li>
+                    -->
 
                     <li class="sidebar-header">Plugins & Addons</li>
 
@@ -114,9 +120,9 @@
             <main class="content">
                 <div class="container-fluid p-0">
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Puchasing</h1>
-                        <a class="badge bg-dark text-white ms-2" href="pengadaan-barang.html">
-                            List data E-purchasing
+                        <h1 class="h3 d-inline align-middle">Penyedia</h1>
+                        <a class="badge bg-dark text-white ms-2" href="#">
+                            List data Penyedia
                         </a>
                     </div>
                     <div class="row">
@@ -124,16 +130,11 @@
                             <table id="datatable" class="display" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th>Kode rup</th>
-                                        <th>Satuan Kerja</th>
-                                        <th>Nama paket</th>
-                                        <th>Metode Pengadaan.</th>
-                                      
-                                        <th>Tanggal Kontrak</th>
-                                        <th>Awal Pelaksanaan</th>
-                                        <th>Akhir Pelaksanaan</th>
-                                        <th>Nilai Kontrak</th>
-                                        <th>Progress</th>
+                                        <th>Npwp</th>
+                                        <th>Nama</th>
+                                        <th>Alamat</th>
+                                        <th>No Telp</th>
+                                        <th>Total Kemenangan</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -141,7 +142,7 @@
                     </div>
                 </div>
             </main>
-                
+
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
@@ -258,29 +259,29 @@
 
         $("#tahun").on("change", function () {
 
-            var text = $("#tahun option:selected").text();
-            var datasatuan = $("#satuankerja option:selected").text();
-            console.log(datasatuan)
-            getData(text, datasatuan)
+            //var text = $("#tahun option:selected").text();
+            //var datasatuan = $("#satuankerja option:selected").text();
+            //console.log(datasatuan)
+            //getData(text, datasatuan)
 
         });
 
         $("#satuankerja").on("change", function () {
 
-            var text = $("#tahun option:selected").text();
-            var datasatuan = $("#satuankerja option:selected").text();
+            //var text = $("#tahun option:selected").text();
+            //var datasatuan = $("#satuankerja option:selected").text();
             // console.log(datasatuan)
-            getData(text, datasatuan)
+            //getData(text, datasatuan)
 
         });
 
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Tender'
             }
             else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=E-Purchasing'+'&satuan='+dinas
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Tender'+'&satuan='+dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -289,7 +290,7 @@
                 ajax:
                 
                 {
-                    "url": api_,
+                    "url": "http://localhost:8000/api/datapakets/getpenyedia",
                     "type": "GET",
                     "dataType": "JSON"
                 },
@@ -297,41 +298,30 @@
             //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
         //}
                 columns: [
-                    { data: "kode_rup" },
-                    { data: "satuan_kerja" },
-                    { data: "nama_paket",
-                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html('<a href="javascript:callModal(\''+oData.kode_rup+'\',\''+oData.nama_paket+'\',\''+oData.satuan_kerja+'\',\''+oData.nilai_kontrak+'\')">' +oData.nama_paket+'</a>');
+                  
+                    { data: "npwp" },
+                    { data: "nama",
+                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html('<a href="javascript:detailPenyedia(\''+oData.npwp+'\',\''+oData.id+'\',\''+oData.nama+'\',\''+oData.alamat+'\',\''+oData.notel+'\')">' +oData.nama+'</a>');
                         }
                      },
-                    // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
-                    { data: "metode_pengadaan" },
-             
-                    { data: "tgl_kontrak" },
-                    { data: "awal_pelaksanaan" },
-                    { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
-                    { data: "progress" },
+                    { data: "alamat" },
+                    { data: "notel" },
+                    { data: "jumlah"}
+                    
                 ],
             });
         }
-        function callModal(data,nama_paket, satker, nilai_kontrak, metode){
-           // console.log('fungsi di panggil', data)
-            const dataPaket = {kode_rup:data, nama_paket:nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode};
-          //  console.log(dataPaket.kode_rup)
-           // console.log(dataPaket)
-            localStorage.setItem('datapaket', JSON.stringify(dataPaket));
+
+        function detailPenyedia(npwp, id, nama, alamat, notel, jumlah){
+            const infopenyedia = {npwp:npwp, id:id, nama:nama, alamat: alamat, notel: notel, jumlah: jumlah};
+        
+            localStorage.setItem('penyedia', JSON.stringify(infopenyedia));
 
 
-            //const datax = JSON.parse(localStorage.getItem('datapaket'));
-
-
-           // const datax = localStorage.getItem('datapaket');
-            //console.log(datax.kode_rup)
-            //const todos = [data, nama_paket, satker, nilai_kontrak ];
-            //localStorage.setItem("inputValue", dataPaket);
-            window.location.href = "detail-project.html";
+            window.location.href = "detail-master-penyedia.html";
         }
+
     </script>
 </body>
 
