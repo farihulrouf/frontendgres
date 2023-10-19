@@ -7,17 +7,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
 
-	<title>Sign In | AdminKit Demo</title>
+	<title>Sign In </title>
 
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -37,31 +39,38 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-3">
-									<form>
+									
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" />
+											<input class="form-control form-control-lg" id="email" type="email" name="email"
+												placeholder="Enter your email" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" id="password" type="password" name="password"
+												placeholder="Enter your password" />
 										</div>
 										<div>
 											<div class="form-check align-items-center">
-												<input id="customControlInline" type="checkbox" class="form-check-input" value="remember-me" name="remember-me" checked>
-												<label class="form-check-label text-small" for="customControlInline">Remember me</label>
+												<input id="customControlInline" type="checkbox" class="form-check-input"
+													value="remember-me" name="remember-me" checked>
+												<label class="form-check-label text-small"
+													for="customControlInline">Remember me</label>
 											</div>
 										</div>
 										<div class="d-grid gap-2 mt-3">
-											<a href="index.html" class="btn btn-lg btn-primary">Sign in</a>
+											<button class="btn btn-primary" onclick="login()">Sign in</button>
+										
 										</div>
-									</form>
+									
 								</div>
 							</div>
 						</div>
+						<!--	
 						<div class="text-center mb-3">
 							Don't have an account? <a href="pages-sign-up.html">Sign up</a>
 						</div>
+						-->
 					</div>
 				</div>
 			</div>
@@ -69,7 +78,57 @@
 	</main>
 
 	<script src="js/app.js"></script>
+	
+	<script>
+		
+		var jwt = localStorage.getItem("jwt");
+		const jwtPayload = JSON.parse(window.atob(jwt.split('.')[1]))
+    	const isExpired = Date.now() >= jwtPayload.exp * 1000;
+		if (jwt != null && !isExpired) {
+			window.location.href = './datamaster.html'
+		}
+		
 
+		function login() {
+			const email = document.getElementById("email").value;
+			const password = document.getElementById("password").value;
+
+			const xhttp = new XMLHttpRequest();
+			xhttp.open("POST", "http://localhost:8000/api/auth/login");
+			xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+			xhttp.send(JSON.stringify({
+				"email": email,
+				"password": password
+			}));
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4) {
+					const objects = JSON.parse(this.responseText);
+					console.log(objects);
+					if (objects['status'] == 'ok') {
+						localStorage.setItem("jwt", objects['access_token']);
+						localStorage.setItem("user", JSON.stringify(objects['user']));
+						//localStorage.setItem('user',objects['user'])
+						Swal.fire({
+							text: objects['message'],
+							icon: 'success',
+							confirmButtonText: 'OK'
+						}).then((result) => {
+							if (result.isConfirmed) {
+								window.location.href = './datamaster.html';
+							}
+						});
+					} else {
+						Swal.fire({
+							text: objects['message'],
+							icon: 'error',
+							confirmButtonText: 'OK'
+						});
+					}
+				}
+			};
+			return false;
+		}
+	</script>
 </body>
 
 </html>
