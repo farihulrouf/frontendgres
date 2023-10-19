@@ -65,12 +65,7 @@
                         </a>
                     </li>
 
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="jasa-konsultasi.html">
-                            <i class="align-middle" data-feather="coffee"></i>
-                            <span class="align-middle">Jasa konsultasi</span>
-                        </a>
-                    </li>
+
 
                     <li class="sidebar-header">Plugins & Addons</li>
 
@@ -137,6 +132,7 @@
                                         <th>Nama paket</th>
                                         <th>Metode Pengadaan.</th>
                                         <th>Nilai Kontrak</th>
+                                        <th>Action</th>
 
                                     </tr>
                                 </thead>
@@ -344,10 +340,7 @@
                     "type": "GET",
                     "dataType": "JSON"
                 },
-                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-
-                //}
+              
                 columns: [
                     { data: "kode_rup" },
                     { data: "satuan_kerja" },
@@ -361,11 +354,28 @@
                     { data: "metode_pengadaan" },
 
 
-                    { data: "nilai_kontrak" }
+                    { data: "nilai_kontrak" },
+                    {
+                        mRender: function (nTd, sData, oData, iRow, iCol) {
+
+                            return '<a href="javascript:deleteData(\'' + oData.kode_rup + '\')"> Delete</a> <a href="#"> Edit</a>';
+                        }
+                    }
+
                 ],
             });
         }
-
+        function deleteData(kode_rup) {
+            const api_ = 'http://localhost:8000/api/datapakets/postdatas?kode_rup='
+            fetch(api_ + kode_rup, {
+                method: 'DELETE'
+            }).then(response => {
+                return response.json()
+            }).then(data =>
+                // this is the data we get after putting our data,
+                console.log(data)
+            );
+        }
         function callModal(data, nama_paket, satker, nilai_kontrak, metode) {
             // console.log('fungsi di panggil', data)
             const dataPaket = { kode_rup: data, nama_paket: nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode };
@@ -373,14 +383,6 @@
             // console.log(dataPaket)
             localStorage.setItem('datapaket', JSON.stringify(dataPaket));
 
-
-            //const datax = JSON.parse(localStorage.getItem('datapaket'));
-
-
-            // const datax = localStorage.getItem('datapaket');
-            //console.log(datax.kode_rup)
-            //const todos = [data, nama_paket, satker, nilai_kontrak ];
-            //localStorage.setItem("inputValue", dataPaket);
             window.location.href = "detail-project.html";
         }
     </script>
