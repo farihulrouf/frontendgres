@@ -534,7 +534,38 @@
         }
         function deleteData(kode_rup) {
             const api_ = 'http://localhost:8000/api/datapakets/postdatas?kode_rup='
-            fetch(api_ + kode_rup, {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                   // const api_ = 'http://localhost:8000/api/datapakets/penyedia?id='
+                    fetch(api_ + kode_rup, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        return response.json()
+                    }).then(data =>
+                        // this is the data we get after putting our data,
+                        console.log(data)
+                    );
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    ).then(function () {
+                        window.location.href = "detail-master-penyedia.html";
+
+                    })
+                }
+            })
+
+           // const api_ = 'http://localhost:8000/api/datapakets/postdatas?kode_rup='
+          /*  fetch(api_ + kode_rup, {
                 method: 'DELETE'
             }).then(response => {
                 return response.json()
@@ -542,6 +573,7 @@
                 // this is the data we get after putting our data,
                 console.log(data)
             );
+            */
         }
         function callModal(data, nama_paket, satker, nilai_kontrak, metode) {
             // console.log('fungsi di panggil', data)

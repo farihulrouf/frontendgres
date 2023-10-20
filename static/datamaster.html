@@ -20,9 +20,14 @@
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
-<body>
+<body onload="loadData()">
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
@@ -47,7 +52,7 @@
 
 
 					<li class="sidebar-header">
-						Tools & Components
+						Data lists
 					</li>
 
 					<li class="sidebar-item active">
@@ -83,7 +88,7 @@
 					</li>
 					-->
 					<li class="sidebar-header">
-						Plugins & Addons
+						Report
 					</li>
 
 					<li class="sidebar-item">
@@ -120,7 +125,20 @@
 				<a class="sidebar-toggle js-sidebar-toggle">
 					<i class="hamburger align-self-center"></i>
 				</a>
-
+				<div class="row">
+                    <div class="col-lg-4">
+                        <select class="form-select" aria-label="Default select example" name="tahun" id="tahun">
+                            <option value="" selected hidden>2023</option>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col-lg-8">
+                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                            <option value="" selected hidden>SELURUH SATUAN KERJA</option>
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 					    <!--	
@@ -298,136 +316,59 @@
 						</li>
 					</ul>
 				</div>
-			</nav>
+		</nav>
 
 
 			<main class="content">
 				<div class="container-fluid p-0">
 
 					<div class="mb-3">
-						<h1 class="h3 d-inline align-middle">Jenis Pengadaan</h1>
+						<h1 class="h3 d-inline align-middle">Master Data</h1>
 						<a class="badge bg-dark text-white ms-2" href="upgrade-to-pro.html">
-							data jenis Pengadaan
+							Master Data
 						</a>
 					</div>
 					<div class="row">
 						<div class="col-12 col-lg-6">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Basic Buttons</h5>
-									<h6 class="card-subtitle text-muted">Default Bootstrap buttons style.</h6>
+							<div class="row mb-4 mt-2">
+								<div class="col-9">
+									<h2>Data Kontrak</h2>
 								</div>
-								<div class="card-body text-center">
-									<div class="mb-3">
-										<button class="btn btn-primary">Primary</button>
-										<button class="btn btn-secondary">Secondary</button>
-										<button class="btn btn-success">Success</button>
-										<button class="btn btn-danger">Danger</button>
-										<button class="btn btn-warning">Warning</button>
-										<button class="btn btn-info">Info</button>
-									</div>
-									<div>
-										<button class="btn btn-primary" disabled>Primary</button>
-										<button class="btn btn-secondary" disabled>Secondary</button>
-										<button class="btn btn-success" disabled>Success</button>
-										<button class="btn btn-danger" disabled>Danger</button>
-										<button class="btn btn-warning" disabled>Warning</button>
-										<button class="btn btn-info" disabled>Info</button>
-									</div>
+								<div class="col-3">
+									<a class="btn btn-primary" href="input-monitoring.html">Tambah data</a>
 								</div>
 							</div>
-
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Button Sizes</h5>
-									<h6 class="card-subtitle text-muted">Fancy larger or smaller buttons.</h6>
-								</div>
-								<div class="card-body text-center">
-									<div class="mb-3">
-										<button class="btn btn-primary btn-sm">Small</button>
-										<button class="btn btn-primary">Medium</button>
-										<button class="btn btn-primary btn-lg">Large</button>
-									</div>
-								</div>
-							</div>
+							<table id="datatable_monitor" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Kode rup</th>
+                                       
+                                        <th>Nama paket</th>
+                                        <th>Action.</th>
+                                    </tr>
+                                </thead>
+                            </table>
 						</div>
 						
 						<div class="col-12 col-lg-6">
-							<div class="card">
-								<div class="card-header">
-									<h5 class="card-title">Button Group</h5>
-									<h6 class="card-subtitle text-muted">Button group components.</h6>
+							<div class="row mb-4 mt-2">
+								<div class="col-9">
+									<h2>Data Kontrak</h2>
 								</div>
-								<div class="card-body">
-									<h6 class="card-subtitle mb-2 text-muted">Horizontal button group</h6>
-									<div class="btn-group btn-group-lg mb-3" role="group"
-										aria-label="Large button group">
-										<button type="button" class="btn btn-secondary">Left</button>
-										<button type="button" class="btn btn-secondary">Middle</button>
-										<button type="button" class="btn btn-secondary">Right</button>
-									</div>
-									<br>
-									<div class="btn-group mb-3" role="group" aria-label="Default button group">
-										<button type="button" class="btn btn-secondary">Left</button>
-										<button type="button" class="btn btn-secondary">Middle</button>
-										<button type="button" class="btn btn-secondary">Right</button>
-									</div>
-									<br>
-									<div class="btn-group btn-group-sm mb-4" role="group"
-										aria-label="Small button group">
-										<button type="button" class="btn btn-secondary">Left</button>
-										<button type="button" class="btn btn-secondary">Middle</button>
-										<button type="button" class="btn btn-secondary">Right</button>
-									</div>
-
-									<h6 class="card-subtitle mb-2 text-muted">Button toolbar</h6>
-									<div class="btn-toolbar mb-4" role="toolbar"
-										aria-label="Toolbar with button groups">
-										<div class="btn-group me-2" role="group" aria-label="First group">
-											<button type="button" class="btn btn-secondary">1</button>
-											<button type="button" class="btn btn-secondary">2</button>
-											<button type="button" class="btn btn-secondary">3</button>
-											<button type="button" class="btn btn-secondary">4</button>
-										</div>
-										<div class="btn-group me-2" role="group" aria-label="Second group">
-											<button type="button" class="btn btn-secondary">5</button>
-											<button type="button" class="btn btn-secondary">6</button>
-											<button type="button" class="btn btn-secondary">7</button>
-										</div>
-										<div class="btn-group" role="group" aria-label="Third group">
-											<button type="button" class="btn btn-secondary">8</button>
-										</div>
-									</div>
-
-									<h6 class="card-subtitle mb-2 text-muted">Vertical button group</h6>
-									<div class="btn-toolbar">
-										<div class="btn-group-vertical me-2" role="group"
-											aria-label="Vertical button group">
-											<button type="button" class="btn btn-primary">Button</button>
-											<button type="button" class="btn btn-primary">Button</button>
-											<button type="button" class="btn btn-primary">Button</button>
-										</div>
-										<div class="btn-group-vertical me-2" role="group"
-											aria-label="Vertical button group">
-											<button type="button" class="btn btn-success">Button</button>
-											<button type="button" class="btn btn-success">Button</button>
-											<button type="button" class="btn btn-success">Button</button>
-										</div>
-										<div class="btn-group-vertical me-2" role="group"
-											aria-label="Vertical button group">
-											<button type="button" class="btn btn-warning">Button</button>
-											<button type="button" class="btn btn-warning">Button</button>
-											<button type="button" class="btn btn-warning">Button</button>
-										</div>
-										<div class="btn-group-vertical me-2" role="group"
-											aria-label="Vertical button group">
-											<button type="button" class="btn btn-danger">Button</button>
-											<button type="button" class="btn btn-danger">Button</button>
-											<button type="button" class="btn btn-danger">Button</button>
-										</div>
-									</div>
+								<div class="col-3">
+									<a class="btn btn-primary" href="input-kontrak.html">Tambah data</a>
 								</div>
 							</div>
+							<table id="datatable_kontrak" class="display" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Kode rup</th>
+                                       
+                                        <th>Nama paket</th>
+										<th>Action</th>
+                                    </tr>
+                                </thead>
+                            </table>
 						</div>
 					</div>
 
@@ -467,10 +408,210 @@
 		</div>
 	</div>
 
-	<script src="js/app.js"></script>
-	
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <!-- Hierarchy Select Js -->
+    <script src="js/hierarchy-select.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            var satker = [
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KESATUAN BANGSA DAN POLITIK",
+                "BADAN PENANGGULANGAN BENCANA DAERAH",
+                "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
+                "BADAN PERENCANAAN PEMBANGUNAN PENELITIAN DAN PENGEMBANGAN DAERAH",
+                "DINAS CIPTA KARYA PERUMAHAN DAN KAWASAN PERMUKIMAN",
+                "DINAS KELUARGA BERENCANA PEMBERDAYAAN PEREMPUAN DAN PERLINDANGAN ANAK KABUPATEN GRESIK",
+                "DINAS KEPENDUDUKAN DAN PENCATATAN SIPIL",
+                "DINAS KESEHATAN",
+                "DINAS KOMUNIKASI DAN INFORMATIKA",
+                "DINAS KOPERASI USAHA MIKRO PERINDUSTRIAN DAN PERDAGANGAN KABUPATEN GRESIK",
+                "DINAS LINGKUNGAN HIDUP KABUPATEN GRESIK",
+                "DINAS PARIWISATA DAN EKONOMI KREATIF KEBUDAYAAN KEPEMUDAAN DAN OLAH RAGA",
+                "DINAS PEKERJAAN UMUM DAN TATA RUANG",
+                "DINAS PEMADAM KEBAKARAN DAN PENYELAMATAN",
+                "DINAS PEMBERDAYAAN MASYARAKAT DAN DESA KABUPATEN GRESIK",
+                "DINAS KELUARGA BERENCANA",
+                "DINAS PENANAMAN MODAL DAN PTSP KABUPATEN GRESIK",
+                "DINAS PENDIDIKAN",
+                "DINAS PERHUBUNGAN",
+                "DINAS PERIKANAN KABUPATEN GRESIK",
+                "DINAS PERPUSTAKAAN DAN KEARSIPAN KABUPATEN GRESIK",
+                "DINAS PERTANIAN KABUPATEN GRESIK",
+                "DINAS SOSIAL",
+                "DINAS TENAGA KERJA",
+                "INSPEKTORAT",
+                "KECAMATAN BALONGPANGGANG",
+                "KECAMATAN BUNGAH",
+                "KECAMATAN CERME",
+                "KECAMATAN DRIYOREJO",
+                "KECAMATAN DUDUK SAMPEYAN",
+                "KECAMATAN DUKUN",
+                "KECAMATAN GRESIK",
+                "KECAMATAN KEBOMAS",
+                "KECAMATAN MANYAR",
+                "KECAMATAN PANCENG",
+                "KECAMATAN SIDAYU",
+                "KECAMATAN UJUNGPANGKAH",
+                "KECAMATAN WRINGINANOM",
+                "SATUAN POLISI PAMONG PRAJA",
+                "SEKRETARIAT DAERAH",
+                "SEKRETARIAT DPRD"
+            ]
+            $("#satuankerja").select2({
+                data: satker
+            })
+        })
+
+        $(document).ready(function () {
+            var tahun = [
+                "2024", "2023", "2022", "2021"
+            ]
+            $("#tahun").select2({
+                data: tahun
+            })
+        })
+
+
+    </script>
+    <script src="js/app.js"></script>
 	<script src="js/auth.js"></script>
+    <script>
+        function loadData() {
+            getData('2023', 'SELURUH SATUAN KERJA')
+			getDataMonitor('2023', 'SELURUH SATUAN KERJA')
+        }
+
+        $("#tahun").on("change", function () {
+
+            var text = $("#tahun option:selected").text();
+            var datasatuan = $("#satuankerja option:selected").text();
+            console.log(datasatuan)
+            getData(text, datasatuan)
+			getDataMonitor(text, datasatuan)
+
+        });
+
+        $("#satuankerja").on("change", function () {
+
+            var text = $("#tahun option:selected").text();
+            var datasatuan = $("#satuankerja option:selected").text();
+            // console.log(datasatuan)
+            getData(text, datasatuan)
+			getDataMonitor(text, datasatuan)
+
+        });
+
+        function getData(text, dinas) {
+            var api_ = ""
+            if (dinas == "SELURUH SATUAN KERJA") {
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text
+            }
+            else {
+                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&satuan='+dinas
+            }
+
+            var table = $("#datatable_kontrak").DataTable({
+                prerender: true,
+                destroy: true,
+                ajax:
+                
+                {
+                    "url": api_,
+                    "type": "GET",
+                    "dataType": "JSON"
+                },
+            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+        //}
+                columns: [
+                    { data: "kode_rup" },
+                    { data: "nama_paket",
+                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html('<a href="javascript:callModal(\''+oData.kode_rup+'\',\''+oData.nama_paket+'\',\''+oData.satuan_kerja+'\',\''+oData.nilai_kontrak+'\')">' +oData.nama_paket+'</a>');
+                        }
+                     },
+                    // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
+                  
+					{
+                        mRender: function (nTd, sData, oData, iRow, iCol) {
+
+                            return '<a href="javascript:deleteData(\'' + oData.id + '\')"> Delete</a> <a href="#"> Edit</a>';
+                        }
+                    }
+             
+                ],
+            });
+        }
+
+
+		
+        function getDataMonitor(text, dinas) {
+            var api_ = ""
+            if (dinas == "SELURUH SATUAN KERJA") {
+                api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun="+text
+            }
+            else {
+                api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun="+text+'&satuan='+dinas
+            }
+
+            var table = $("#datatable_monitor").DataTable({
+                prerender: true,
+                destroy: true,
+                ajax:
+                
+                {
+                    "url": api_,
+                    "type": "GET",
+                    "dataType": "JSON"
+                },
+            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+        //}
+                columns: [
+                    { data: "kode_rup" },
+                    { data: "nama_paket"
+                     },
+                    // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
+                    {
+                        mRender: function (nTd, sData, oData, iRow, iCol) {
+
+                            return '<a href="javascript:deleteData(\'' + oData.id + '\')"> Delete</a> <a href="#"> Edit</a>';
+                        }
+                    }
+             
+                ],
+            });
+        }
+		
+
+        function callModal(data,nama_paket, satker, nilai_kontrak, metode){
+           // console.log('fungsi di panggil', data)
+            const dataPaket = {kode_rup:data, nama_paket:nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode};
+          //  console.log(dataPaket.kode_rup)
+           // console.log(dataPaket)
+            localStorage.setItem('datapaket', JSON.stringify(dataPaket));
+
+
+            //const datax = JSON.parse(localStorage.getItem('datapaket'));
+
+
+           // const datax = localStorage.getItem('datapaket');
+            //console.log(datax.kode_rup)
+            //const todos = [data, nama_paket, satker, nilai_kontrak ];
+            //localStorage.setItem("inputValue", dataPaket);
+            window.location.href = "detail-project.html";
+        }
+    </script>
 
 </body>
 

@@ -21,6 +21,13 @@ else {
         //console.log(JSON.parse(user))
     }
 }
+
+const logOut = () => {
+      
+       const jwt = localStorage.removeItem('jwt');
+       const user = localStorage.removeItem('user');
+    
+}
 /*
   var jwt = localStorage.getItem("jwt");
   if (jwt != null) {
