@@ -304,6 +304,7 @@
                             <option></option>
                         </select>
 
+
                     </div>
                     <div class="col-3 col-lg-3">
                         <input type="number" class="form-control mt-4 mb-4 p-2" id="pagu_urp" placeholder="pagu urp">
@@ -321,60 +322,57 @@
                     </div>
 
                     <div class="col-4 col-lg-4">
-                        <input type="text" class="form-control datepicker mt-2 mb-4 p-2" id="tgl_kontrak" name="date"
-                            placeholder="Awal Pelaksanaan">
-                    </div>
-                    <div class="col-4 col-lg-4">
-                        <input type="text" class="form-control datepicker mt-2 mb-4 p-2" id="awal_pelaksanaan"
-                            name="date" placeholder="Awal Pelaksanaan">
-                    </div>
-                    <div class="col-4 col-lg-4">
-                        <input type="text" class="form-control datepicker mt-2 mb-4 p-2" id="akhir_pelaksanaan"
-                            name="date" placeholder="Akhir Pelaksanaan">
-                    </div>
-                    <div class="col-4 col-lg-4">
-                        <select class="form-select mt-4 mb-4" aria-label="Default select pdn" id="pdn">
-                            <option selected>Pilih PDN</option>
-                            <option value="1">Iya</option>
-                            <option value="2">Tidak</option>
+
+                        <select class="form-select style-select mt-2 mb-8" aria-label="Default select example"
+                            id="tahapan">
+                            <option value="" selected hidden>TAHAPAN</option>
+                            <option></option>
                         </select>
                     </div>
                     <div class="col-4 col-lg-4">
-                        <select class="form-select mt-4 mb-4" aria-label="Default select pdn" id="umk">
-                            <option selected>Pilih UMK</option>
-                            <option value="1">Iya</option>
-                            <option value="2">Tidak</option>
+
+                        <select class="form-select style-select mt-2 mb-8" aria-label="Default select example" id="pdn">
+                            <option value="" selected hidden>PILIH PDN</option>
+                            <option></option>
                         </select>
+                    </div>
+                    <div class="col-4 col-lg-4">
+
+                        <select class="form-select style-select mt-2 mb-8" aria-label="Default select example" id="umk">
+                            <option value="" selected hidden>PILIH UMK</option>
+                            <option></option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-lg-12">
+
+                        <input type="text" class="form-control mt-4 mb-4 p-2" id="status_paket"
+                            placeholder="Status paket">
+
                     </div>
                     <div class="col-5 col-lg-5">
-                        <select class="form-select mt-4 mb-4" aria-label="Default select jenis" id="pengadaan">
-                            <option selected>Pilih meotde pengadaan</option>
-                            <option value="epurchasing">E-Purchasing</option>
-                            <option value="pengadaanlangsung">Pengadaan Langsung</option>
-                            <option value="kecuali">Pengecualian</option>
-                            <option value="penunjukan">Penunjukan Langsung</option>
-                            <option value="swakelola">Swakelola</option>
-                            <option value="tender">Tender</option>
+                        <select class="form-select style-select mt-4 mb-4 p-2" aria-label="Default select example"
+                            id="metode_pengadaan">
+                            <option value="" selected hidden>METODE PENGADAAN</option>
+                            <option></option>
                         </select>
+
+
                     </div>
                     <div class="col-4 col-lg-4">
-                        <select class="form-select mt-4 mb-4" aria-label="Default select jenis" id="jenis_pengadaan">
-                            <option selected>Jenis Pengadaan</option>
-                            <option value="barang">Pengadaan Barang</option>
-                            <option value="konsultansi">Jasa Konsultansi</option>        
-                            <option value="lainya">Jasa Lainnya</option>
-                            <option value="konstruksi">Pekerjaan Konstruksi</option>
+                        <select class="form-select style-select mt-4 mb-4 p-2" aria-label="Default select example"
+                            id="jenis_pengadaan">
+                            <option value="" selected hidden>JENIS PENGADAAN</option>
+                            <option></option>
                         </select>
                     </div>
-                    
+                    <div class="col-3 col-lg-3">
+                        <select class="form-select p-2" aria-label="Default select example" name="tahun" id="tahun">
+                            <option value="" selected hidden>2023</option>
+                            <option></option>
+                        </select>
+                    </div>
                 </div>
-
-
-
-                <select class="form-select p-2" aria-label="Default select example" name="tahun" id="tahun">
-                    <option value="" selected hidden>2023</option>
-                    <option></option>
-                </select>
 
                 <button class="btn btn-primary mt-4">Simpan</button>
             </main>
@@ -456,6 +454,57 @@
             });
         });
 
+        $(document).ready(function () {
+            var jenis = [
+                "Pngadaan Barang",
+                "Jasa Konsultasi",
+                "Pekerjaan Konstruksi",
+                "Jasa lainya"
+            ];
+
+            $("#jenis_pengadaan").select2({
+                data: jenis,
+            });
+        });
+
+
+        $(document).ready(function () {
+            var pdn = [
+                "Iya",
+                "Tidak",
+            ];
+
+            $("#pdn").select2({
+                data: pdn,
+            });
+        });
+
+        $(document).ready(function () {
+            var tahapan = [
+                "Perencanaan",
+                "Serah Terima",
+                "Kontrak",
+                "Hasil Pemilihan",
+                "Pemilihan",
+                "Persiapan"
+            ];
+
+            $("#tahapan").select2({
+                data: tahapan,
+            });
+        });
+
+
+        $(document).ready(function () {
+            var umk = [
+                "Iya",
+                "Tidak",
+            ];
+
+            $("#umk").select2({
+                data: umk,
+            });
+        });
 
         $(document).ready(function () {
             var satker = [
@@ -508,6 +557,22 @@
         })
 
         $(document).ready(function () {
+            var metode = [
+                "E-purchasing",
+                "Pengadaan Langsung",
+                "Pengecualian",
+                "Penunjukan Langsung",
+                "Swakelola",
+                "Seleksi",
+                "Tender",
+            ];
+
+            $("#metode_pengadaan").select2({
+                data: metode,
+            });
+        });
+
+        $(document).ready(function () {
             var tahun = [
                 "2024", "2023", "2022", "2021"
             ]
@@ -517,7 +582,21 @@
         })
 
         const simpanData = () => {
+            var kode_rup = document.getElementById("kode_rup").value;
+            var nama_paket = document.getElementById("nama_paket").value;
+            var satuankerja = $("#satuankerja option:selected").text();
+            var pagu_urp = document.getElementById("pagu_urp").value
+            var nilai_kontrak = document.getElementById("nilai_kontrak").value;
+            var nilai_hps = document.getElementById("nilai_hps").value;
+            var efisiensi = document.getElementById("efisiensi").value;
+            var metode = $("#metode_pengadaan option:selected").text();
 
+
+            var progress = document.getElementById("progress").value;
+            var tahun = $("#tahun option:selected").text();
+            var pdn = $("#pdn option:selected").text();
+            var pradika = $("#pradika option:selected").text();
+            var umk = $("#umk option:selected").text();
         }
 
 
