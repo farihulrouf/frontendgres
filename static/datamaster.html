@@ -588,7 +588,39 @@
        
         }
 
-		
+		const deleteMonitoringData = (id) => {
+			Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+					
+                    const api_ = 'http://localhost:8000/api/datapakets/delemonitoring?kode_rup='
+                    fetch(api_ + id, {
+                        method: 'DELETE'
+                    }).then(response => {
+                        return response.json()
+                    }).then(data =>
+                        // this is the data we get after putting our data,
+                        console.log(data)
+                    );
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    ).then(function () {
+                        window.location.href = "datamaster.html";
+
+                    })
+                }
+            })
+       
+		}
         function getDataMonitor(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
@@ -616,10 +648,11 @@
                     { data: "nama_paket"
                      },
                     // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
+					
                     {
                         mRender: function (nTd, sData, oData, iRow, iCol) {
 
-                            return '<a href="javascript:deleteData(\'' + oData.id + '\')"> Delete</a> <a href="#"> Edit</a>';
+                            return '<a href="javascript:deleteMonitoringData(\'' + oData.kode_rup + '\')"> Delete</a> <a href="#"> Edit</a>';
                         }
                     }
              
