@@ -29,7 +29,7 @@
 
 </head>
 
-<body onload="loadData()">
+<body>
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
@@ -302,15 +302,31 @@
                     <option value="" selected hidden>METODE PENGADAAN</option>
                     <option></option>
                 </select>
+
+
+
+
+
                 <input type="number" class="form-control mt-4 mb-4 p-2" id="nilai_kontrak" placeholder="Nilai kontrak">
 
-
-                <input type="text" class="form-control datepicker mb-4 p-2" id="tgl_kontrak" name="date"
+                <select class="form-select style-select mt-6 mb-4 p-2" aria-label="Default select example" id="pdn">
+                    <option value="" selected hidden>PDN</option>
+                    <option></option>
+                </select>
+                <input type="text" class="form-control datepicker mt-4 mb-4 p-2" id="tgl_kontrak" name="date"
                     placeholder="Tanggal Kontrak">
-
-                <input type="text" class="form-control datepicker mt-2 mb-4 p-2" id="awal_pelaksanaan" name="date"
+                <select class="form-select style-select mt-4 mb-4 p-2" aria-label="Default select example" id="umk">
+                    <option value="" selected hidden>UMK</option>
+                    <option></option>
+                </select>
+                <input type="text" class="form-control datepicker mt-4 mb-4 p-2" id="awal_pelaksanaan" name="date"
                     placeholder="Awal Pelaksanaan">
-                <input type="text" class="form-control datepicker mt-2 mb-4 p-2" id="akhir_pelaksanaan" name="date"
+
+                <select class="form-select style-select mt-4 mb-4 p-2" aria-label="Default select example" id="pradika">
+                    <option value="" selected hidden>PRADIKA</option>
+                    <option></option>
+                </select>
+                <input type="text" class="form-control datepicker mt-4 mb-4 p-2" id="akhir_pelaksanaan" name="date"
                     placeholder="Akhir Pelaksanaan">
                 <input class="form-control mt-4 mb-4 p-2" type="number" id="progress" name="Progress" min="1" max="100"
                     placeholder="progress">
@@ -320,7 +336,7 @@
                     <option></option>
                 </select>
 
-                <button class="btn btn-primary mt-4">Simpan</button>
+                <button class="btn btn-primary mt-4" onclick="simpanData()">Simpan</button>
             </main>
 
             <footer class="footer">
@@ -460,8 +476,145 @@
             })
         })
 
+        $(document).ready(function () {
+            var pdn = [
+                "Iya",
+                "Tidak",
+            ];
+
+            $("#pdn").select2({
+                data: pdn,
+            });
+        });
+
+        $(document).ready(function () {
+            var pradika = [
+                "Iya",
+                "Tidak",
+            ];
+
+            $("#pradika").select2({
+                data: pradika,
+            });
+        });
+
+        $(document).ready(function () {
+            var umk = [
+                "Iya",
+                "Tidak",
+            ];
+
+            $("#umk").select2({
+                data: umk,
+            });
+        });
+
+
         const simpanData = () => {
-            
+            var kode_rup = document.getElementById("kode_rup").value;
+            var nama_paket = document.getElementById("nama_paket").value;
+            var tgl_kontrak = document.getElementById("tgl_kontrak").value
+            var awal_pelaksanaan = document.getElementById("awal_pelaksanaan").value
+            var akhir_pelaksanaan = document.getElementById("akhir_pelaksanaan").value
+            var nilai_kontrak = document.getElementById("nilai_kontrak").value;
+            var progress = document.getElementById("progress").value;
+            var tahun = $("#tahun option:selected").text();
+            var metode = $("#metode_pengadaan option:selected").text();
+            var satuankerja = $("#satuankerja option:selected").text();
+            var pdn = $("#pdn option:selected").text();
+            var pradika = $("#pradika option:selected").text();
+            var umk = $("#umk option:selected").text();
+            // console.log(kode_rup, nama_paket, nilai_kontrak, progress, tgl_kontrak, metode, satuankerja)
+
+            /* $.ajax({
+                 type: "POST",
+                 url: "http://localhost:8000/api/datapakets/datakontrak",
+                 dataType: "json",  // <<<<<<<<<<<<<<<
+                 data: {
+                     message: message,
+                 },
+                 success: function (data) {
+                     if (data.error) {   // <<<<<<<<<<<<<<<
+                         console.log(data.error);
+                     } else {
+                         console.log(data);
+                     }
+                 },
+             });
+             */
+
+            fetch("http://localhost:8000/api/datapakets/datakontrak", {
+
+                // Adding method type
+                method: "POST",
+
+                // Adding body or contents to send
+                body: JSON.stringify({
+                    kode_rup: kode_rup,
+                    nama_paket: nama_paket,
+                    tgl_kontrak: tgl_kontrak,
+                    awal_pelaksanaan: awal_pelaksanaan,
+                    akhir_pelaksanaan: akhir_pelaksanaan,
+                    nilai_kontrak: nilai_kontrak,
+                    progress: progress,
+                    tahun: tahun,
+                    metode_pengadaan: metode,
+                    satuan_kerja: satuankerja,
+                    pradipa: pradika,
+                    pdn: pdn,
+                    umk: umk
+
+                }),
+
+                // Adding headers to the request
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            }).then(response => {
+                //console.log(response.data)
+                /*if (response.status === 404)
+                    throw new Error('not found');
+                if (response.status !== 200)
+                    throw new Error('error');
+                */
+
+                /* if (response.message == true)
+                    console.log('error')
+                 if (response.message == false)
+                     console.log('error')
+                 */
+                //  console.log(response)
+                return response.json()
+            }).then(data =>
+                getDataMessage(data)
+                // if(data.message == false)
+                // console.log(data)
+            )
+                .then(function () {
+                    // window.location.href = "datamaster.html";
+
+                })
+
+
+
+        }
+        const getDataMessage = (data) => {
+            console.log("ini data", data)
+            if (data.success) {
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            }
+            else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                })
+            }
         }
 
 
