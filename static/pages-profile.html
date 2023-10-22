@@ -27,7 +27,7 @@
 
 </head>
 
-<body onload="loadData()">
+<body>
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
@@ -127,7 +127,7 @@
 				<a class="sidebar-toggle js-sidebar-toggle">
 					<i class="hamburger align-self-center"></i>
 				</a>
-				
+
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 						<!--	
@@ -317,23 +317,22 @@
 					</div>
 					<div class="row">
 						<div class="row">
-							<div class="col-8 col-lg-12">	
-								<input type="text" class="form-control mb-4 p-2" id="nama_pengguna"	placeholder="nama">
-							</div>
-							<div class="col-12 col-lg-12">	
-								<input type="email" class="form-control mb-4 p-2" id="email"
-								placeholder="Input email">
-							</div>
-							<div class="col-12 col-lg-12">	
-								<input type="password" class="form-control mb-4 p-2" id="password"
-								placeholder="password">
-							</div>
-							<div class="col-12 col-lg-12">	
-								<input type="password" class="form-control mb-4 p-2" id="retype_password"
-								placeholder="Retype password">
+							<div class="col-8 col-lg-12">
+								<input type="text" class="form-control mb-4 p-2" id="nama_pengguna" placeholder="nama">
 							</div>
 							<div class="col-12 col-lg-12">
-								<button class="btn btn-success p-2">Simpan</button>
+								<input type="email" class="form-control mb-4 p-2" id="email" placeholder="Input email">
+							</div>
+							<div class="col-12 col-lg-12">
+								<input type="password" class="form-control mb-4 p-2" id="password"
+									placeholder="password">
+							</div>
+							<div class="col-12 col-lg-12">
+								<input type="password" class="form-control mb-4 p-2" id="retype_password"
+									placeholder="Retype password">
+							</div>
+							<div class="col-12 col-lg-12">
+								<button class="btn btn-success p-2" onclick="updateUser()">Simpan</button>
 							</div>
 						</div>
 					</div>
@@ -388,13 +387,81 @@
 	<script src="js/hierarchy-select.min.js"></script>
 
 	<script>
-	
+		const updateUser = () => {
 
+			var nama = document.getElementById("nama_pengguna").value;
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+
+
+			let user = JSON.parse(localStorage.getItem('user'));
+			let token = localStorage.getItem('jwt');
+			console.log(token)
+			console.log(user.id);
+
+			fetch("http://localhost:8000/api/auth/user-profile/" + user.id, {
+
+				// Adding method type
+				method: "POST",
+
+				// Adding body or contents to send
+				body: JSON.stringify({
+					email: email,
+					password: password,
+					name: nama
+
+				}),
+
+				// Adding headers to the request
+				headers: {
+					"Content-type": "application/json; charset=UTF-8",
+					'Authorization': 'Bearer' + " " + token
+
+				}
+			}).then(response => {
+				//localStorage.setItem("user", JSON.stringify(res['user']))
+				return response.json()
+			}).then(data =>
+
+				getDataMessage(data)
+				// if(data.message == false)
+				// console.log(data)
+			)
+
+
+
+		}
+
+
+		const getDataMessage = (data) => {
+
+			if (data.msg == 'Updated Successfully!') {
+				Swal.fire(
+					'Succes insert!',
+					'You clicked the button!',
+					'success'
+				)
+					.then(function (result) {
+						if (result.value) {
+							window.location = "datamaster.html";
+						}
+					})
+			}
+			else {
+
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'Something went wrong!',
+					footer: '<a href="">Why do I have this issue?</a>'
+				})
+			}
+		}
 
 	</script>
 	<script src="js/app.js"></script>
 	<script src="js/auth.js"></script>
-	
+
 
 </body>
 
