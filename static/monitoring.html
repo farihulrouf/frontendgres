@@ -66,12 +66,12 @@
                     </li>
 
 
-                    <li class="sidebar-header">Plugins & Addons</li>
+                    <li class="sidebar-header">Report</li>
 
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="laporan.html">
                             <i class="align-middle" data-feather="bar-chart-2"></i>
-                            <span class="align-middle">Charts</span>
+                            <span class="align-middle">Laporan</span>
                         </a>
                     </li>
                 </ul>
@@ -113,9 +113,9 @@
             <main class="content">
                 <div class="container-fluid p-0">
                     <div class="mb-3">
-                        <h1 class="h3 d-inline align-middle">Penunjukan Langsung</h1>
+                        <h1 class="h3 d-inline align-middle">Data Monitoring</h1>
                         <a class="badge bg-dark text-white ms-2" href="#">
-                            List data Penunjukan Langsung	
+                            List data Monitoring	
                         </a>
                     </div>
                     <div class="row">
@@ -126,13 +126,13 @@
                                         <th>Kode rup</th>
                                         <th>Satuan Kerja</th>
                                         <th>Nama paket</th>
+                                        <th>Tahapan</th>
                                         <th>Metode Pengadaan.</th>
-                                       
-                                        <th>Tanggal Kontrak</th>
-                                        <th>Awal Pelaksanaan</th>
-                                        <th>Akhir Pelaksanaan</th>
-                                        <th>Nilai Kontrak</th>
-                                        <th>Progress</th>
+                                        <th>Pagu URP</th>
+                                        <th>Nilai Hps</th>
+                                        <th>Nilai Kontrak</th>         
+                                        <th>Efisiensi</th>
+
                                     </tr>
                                 </thead>
                             </table>
@@ -276,10 +276,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Penunjukan Langsung'
+                api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun="+text
             }
             else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Penunjukan Langsung'+'&satuan='+dinas
+                api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun="+text+'&satuan='+dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -303,13 +303,18 @@
                             $(nTd).html("<a href='detail-project.html'>"+oData.nama_paket+"</a>");
                         }
                      },
+                     { data: "tahapan"},
                     { data: "metode_pengadaan" },
+                    
+                    {data: "pagu_urp",
+                    render: $.fn.dataTable.render.number(',', '.', 2)},
+                    {data: "nilai_hps",
+                    render: $.fn.dataTable.render.number(',', '.', 2)},
+                    {data: "nilai_kontrak",
+                    render: $.fn.dataTable.render.number(',', '.', 2)},
+                    {data: "efisiensi",
+                    render: $.fn.dataTable.render.number(',', '.', 2)}
                  
-                    { data: "tgl_kontrak" },
-                    { data: "awal_pelaksanaan" },
-                    { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
-                    { data: "progress" },
                 ],
             });
         }
