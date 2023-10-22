@@ -28,65 +28,78 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-                <a class="sidebar-brand" href="index.html">
-                    <span class="align-middle">Blp Gresik</span>
-                </a>
-
-                <ul class="sidebar-nav">
-                    <li class="sidebar-header">Pages</li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="index.html">
-                            <i class="align-middle" data-feather="sliders"></i>
-                            <span class="align-middle">Dashboard</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-header">Data list</li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="ui-buttons.html">
-                            <i class="align-middle" data-feather="square"></i>
-                            <span class="align-middle">Data Master</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item active">
-                        <a class="sidebar-link" href="monitoring.html">
-                            <i class="align-middle" data-feather="check-square"></i>
-                            <span class="align-middle">Monitoring</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="penyedia.html">
-                            <i class="align-middle" data-feather="align-left"></i>
-                            <span class="align-middle">Penyedia</span>
-                        </a>
-                    </li>
-
-
-                    <li class="sidebar-header">Plugins & Addons</li>
-
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="laporan.html">
-                            <i class="align-middle" data-feather="bar-chart-2"></i>
-                            <span class="align-middle">Charts</span>
-                        </a>
-                    </li>
-                </ul>
-
-                <div class="sidebar-cta">
-                    <div class="sidebar-cta-content">
-                        <strong class="d-inline-block mb-2">Kontak</strong>
-                        <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
-                        <div class="d-grid">
-                            <a href="#" class="btn btn-primary">Kontak kami</a>
-                        </div>
-                    </div>
+              <a class="sidebar-brand" href="index.html">
+                <span class="align-middle">BLP GRESIK</span>
+              </a>
+      
+              <ul class="sidebar-nav">
+                <li class="sidebar-header">Pages</li>
+      
+                <li class="sidebar-item active">
+                  <a class="sidebar-link" href="index.html">
+                    <i class="align-middle" data-feather="sliders"></i>
+                    <span class="align-middle">Dashboard</span>
+                  </a>
+                </li>
+      
+                <li class="sidebar-header">Data list</li>
+      
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="datamaster.html">
+                    <i class="align-middle" data-feather="square"></i>
+                    <span class="align-middle">Data Master</span>
+                  </a>
+                </li>
+      
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="monitoring.html">
+                    <i class="align-middle" data-feather="check-square"></i>
+                    <span class="align-middle">Monitoring</span>
+                  </a>
+                </li>
+      
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="penyedia.html">
+                    <i class="align-middle" data-feather="align-left"></i>
+                    <span class="align-middle">Penyedia</span>
+                  </a>
+                </li>
+                <!--
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="jasa-konsultasi.html">
+                    <i class="align-middle" data-feather="coffee"></i>
+                    <span class="align-middle">Jasa Konsultasi</span>
+                  </a>
+                </li>
+              -->
+                <li class="sidebar-header">Report</li>
+      
+                <li class="sidebar-item">
+                  <a class="sidebar-link" href="laporan.html">
+                    <i class="align-middle" data-feather="bar-chart-2"></i>
+                    <span class="align-middle">Laporan</span>
+                  </a>
+                </li>
+                <!--
+                          <li class="sidebar-item">
+                              <a class="sidebar-link" href="maps-google.html">
+                                  <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+                              </a>
+                          </li>
+                          -->
+              </ul>
+      
+              <div class="sidebar-cta">
+                <div class="sidebar-cta-content">
+                  <strong class="d-inline-block mb-2">Kontak</strong>
+                  <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
+                  <div class="d-grid">
+                    <a href="upgrade-to-pro.html" class="btn btn-primary">Kontak kami</a>
+                  </div>
                 </div>
+              </div>
             </div>
-        </nav>
+          </nav>
 
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -309,7 +322,8 @@
                     { data: "tgl_kontrak" },
                     { data: "awal_pelaksanaan" },
                     { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
+                    { data: "nilai_kontrak",
+                    render: $.fn.dataTable.render.number(',', '.', 2) },
                     { data: "progress" },
                 ],
             });

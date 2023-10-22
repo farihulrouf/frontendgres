@@ -1,5 +1,6 @@
 .card-style {
     width: 280px;
+    box-shadow: 5px 10px white;
 }
 .style-select {
     width: 500px;

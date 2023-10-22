@@ -308,7 +308,8 @@
                     { data: "tgl_kontrak" },
                     { data: "awal_pelaksanaan" },
                     { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak" },
+                    { data: "nilai_kontrak",
+                    render: $.fn.dataTable.render.number(',', '.', 2) },
                     { data: "progress" },
                 ],
             });
