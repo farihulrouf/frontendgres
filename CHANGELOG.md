@@ -36,7 +36,7 @@ All notable changes to this project will be documented in this file.
 
 - Add file structure to README.md
 - Add icons to dashboard (/index.html)
-- Add marketing page (/upgrade-to-pro.html)
+- Add marketing page (/#)
 - Remove unused sass files
 - Remove unused dependencies
 - Various visual changes
