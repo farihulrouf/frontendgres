@@ -290,10 +290,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=seleksi'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=seleksi'
             }
             else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=seleksi'+'&satuan='+dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=seleksi'+'&satuan='+dinas
             }
 
             var table = $("#datatable").DataTable({

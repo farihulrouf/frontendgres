@@ -474,10 +474,10 @@ https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun=" + text + '&metode=Tender'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender'
             }
             else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun=" + text + '&metode=Tender' + '&satuan=' + dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -486,7 +486,7 @@ https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js
                 ajax:
 
                 {
-                    "url": "http://localhost:8000/api/datapakets/penyedia",
+                    "url": "https://lpse-gresik.cloud/api/datapakets/penyedia",
                     "type": "GET",
                     "dataType": "JSON"
                 },
@@ -526,7 +526,7 @@ https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    const api_ = 'http://localhost:8000/api/datapakets/penyedia?id='
+                    const api_ = 'https://lpse-gresik.cloud/api/datapakets/penyedia?id='
                     fetch(api_ + id, {
                         method: 'DELETE'
                     }).then(response => {
@@ -546,7 +546,7 @@ https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js
                 }
             })
             /*
-            const api_ = 'http://localhost:8000/api/datapakets/penyedia?id='
+            const api_ = 'https://lpse-gresik.cloud/api/datapakets/penyedia?id='
             fetch(api_ + id, {
                 method: 'DELETE'
             }).then(response => {

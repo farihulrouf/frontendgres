@@ -278,10 +278,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Tender'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Tender'
             }
             else {
-                api_ = "http://localhost:8000/api/datapakets/getdata?tahun="+text+'&metode=Tender'+'&satuan='+dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Tender'+'&satuan='+dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -290,7 +290,7 @@
                 ajax:
                 
                 {
-                    "url": "http://localhost:8000/api/datapakets/getpenyedia",
+                    "url": "https://lpse-gresik.cloud/api/datapakets/getpenyedia",
                     "type": "GET",
                     "dataType": "JSON"
                 },

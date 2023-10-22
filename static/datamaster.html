@@ -516,10 +516,10 @@
 		function getData(text, dinas) {
 			var api_ = ""
 			if (dinas == "SELURUH SATUAN KERJA") {
-				api_ = "http://localhost:8000/api/datapakets/getdata?tahun=" + text
+				api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text
 			}
 			else {
-				api_ = "http://localhost:8000/api/datapakets/getdata?tahun=" + text + '&satuan=' + dinas
+				api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&satuan=' + dinas
 			}
 
 			var table = $("#datatable_kontrak").DataTable({
@@ -569,7 +569,7 @@
 			}).then((result) => {
 				if (result.isConfirmed) {
 
-					const api_ = 'http://localhost:8000/api/datapakets/hapuskontrak?kode_rup='
+					const api_ = 'https://lpse-gresik.cloud/api/datapakets/hapuskontrak?kode_rup='
 					fetch(api_ + id, {
 						method: 'DELETE'
 					}).then(response => {
@@ -603,7 +603,7 @@
 			}).then((result) => {
 				if (result.isConfirmed) {
 
-					const api_ = 'http://localhost:8000/api/datapakets/delemonitoring?kode_rup='
+					const api_ = 'https://lpse-gresik.cloud/api/datapakets/delemonitoring?kode_rup='
 					fetch(api_ + id, {
 						method: 'DELETE'
 					}).then(response => {
@@ -627,10 +627,10 @@
 		function getDataMonitor(text, dinas) {
 			var api_ = ""
 			if (dinas == "SELURUH SATUAN KERJA") {
-				api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun=" + text
+				api_ = "https://lpse-gresik.cloud/api/datapakets/getdatamonitor?tahun=" + text
 			}
 			else {
-				api_ = "http://localhost:8000/api/datapakets/getdatamonitor?tahun=" + text + '&satuan=' + dinas
+				api_ = "https://lpse-gresik.cloud/api/datapakets/getdatamonitor?tahun=" + text + '&satuan=' + dinas
 			}
 
 			var table = $("#datatable_monitor").DataTable({

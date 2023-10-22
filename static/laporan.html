@@ -290,13 +290,13 @@
       const getDataEfieinsiKontrak = (dinas, text) => {
         var api_ = ""
         if (dinas == "SELURUH SATUAN KERJA") {
-          api_ = "http://localhost:8000/api/datapakets/efisiensi?tahun=" + text
+          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + text
         }
         else {
-          api_ = "http://localhost:8000/api/datapakets/efisiensi?tahun=" + text + '&sk=' + dinas
+          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + text + '&sk=' + dinas
         }
 
-        //api_ = "http://localhost:8000/api/datapakets/efisiensihps?tahun="+text
+        //api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun="+text
         var table = $("#efisiensikontrak").DataTable({
           prerender: true,
           destroy: true,
@@ -331,13 +331,13 @@
       function getData(dinas, text) {
         var api_ = ""
         if (dinas == "SELURUH SATUAN KERJA") {
-          api_ = "http://localhost:8000/api/datapakets/efisiensihps?tahun=" + text
+          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + text
         }
         else {
-          api_ = "http://localhost:8000/api/datapakets/efisiensihps?tahun=" + text + '&sk=' + dinas
+          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + text + '&sk=' + dinas
         }
 
-        //api_ = "http://localhost:8000/api/datapakets/efisiensihps?tahun="+text
+        //api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun="+text
         var table = $("#efisiensi").DataTable({
           prerender: true,
           destroy: true,

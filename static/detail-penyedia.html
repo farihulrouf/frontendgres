@@ -301,16 +301,16 @@
         function getData() {
             
             const datax = JSON.parse(localStorage.getItem('penyedia'));
-            const api='http://localhost:8000/api/datapakets/detailpemenang?idpemenang='
+            const api='https://lpse-gresik.cloud/api/datapakets/detailpemenang?idpemenang='
 			//getData(datax.kode_rup)
-            //http://localhost:8000/api/datapakets/getwinpro?id=4
+            //https://lpse-gresik.cloud/api/datapakets/getwinpro?id=4
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
                 
                 {
-                    "url": "http://localhost:8000/api/datapakets/getwinpro?id="+datax.id,
+                    "url": "https://lpse-gresik.cloud/api/datapakets/getwinpro?id="+datax.id,
                     "type": "GET",
                     "dataType": "JSON"
                 },

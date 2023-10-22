@@ -404,7 +404,7 @@
                 ajax: {
 
                     //url: "https://api.github.com/search/repositories",
-                    url: "http://localhost:8000/api/datapakets/getdata?tahun=2023",
+                    url: "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=2023",
                     dataType: 'json',
                     data: (params) => {
                         return {
@@ -565,16 +565,16 @@
         function getData() {
 
             const datax = JSON.parse(localStorage.getItem('penyedia'));
-            const api = 'http://localhost:8000/api/datapakets/detailpemenang?idpemenang='
+            const api = 'https://lpse-gresik.cloud/api/datapakets/detailpemenang?idpemenang='
             //getData(datax.kode_rup)
-            //http://localhost:8000/api/datapakets/getwinpro?id=4
+            //https://lpse-gresik.cloud/api/datapakets/getwinpro?id=4
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
 
                 {
-                    "url": "http://localhost:8000/api/datapakets/getwinpro?id=" + datax.id,
+                    "url": "https://lpse-gresik.cloud/api/datapakets/getwinpro?id=" + datax.id,
                     "type": "GET",
                     "dataType": "JSON"
                 },
@@ -703,7 +703,7 @@
             for (i = 1; i < tbl.length; i++) {
                 // console.log("print data", tbl[i].Kode)
 
-                fetch("http://localhost:8000/api/datapakets/postdata", {
+                fetch("https://lpse-gresik.cloud/api/datapakets/postdata", {
 
                     method: "POST",
 
