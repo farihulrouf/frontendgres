@@ -428,12 +428,12 @@
       // clear_data()
       var data_api = ''
       if (datasatuan == 'SELURUH SATUAN KERJA') {
-        data_api = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
+        data_api = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
       }
       else {
-        data_api = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
+        data_api = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
       }
-      //fetch("http://localhost:8000/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
+      //fetch("http://lpse-gresik.cloud/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
       fetch(data_api).then(res => res.json())
         .then(res => {
           str_body = ""
@@ -517,13 +517,13 @@
 
       var api_ = ""
       if (satuan == "SELURUH SATUAN KERJA") {
-         api_ = "http://localhost:8000/api/datapakets/getdatametode?tahun="+tahun
+         api_ = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun="+tahun
        }
       else {
-         api_ = "http://localhost:8000/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
+         api_ = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
       }
 
-      //const apiUrl = "http://localhost:8000/api/datapakets/getdatametode?tahun=" + tahun
+      //const apiUrl = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
 
       const response = await fetch(api_)
       const barChatData = await response.json()
