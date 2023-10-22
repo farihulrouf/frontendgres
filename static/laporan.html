@@ -266,6 +266,26 @@
           data: tahun
         })
       })
+
+
+      $("#tahun").on("change", function () {
+
+        var text = $("#tahun option:selected").text();
+        var datasatuan = $("#satuankerja option:selected").text();
+        getData(datasatuan, text)
+        getDataEfieinsiKontrak(datasatuan, text)
+        // console.log(datasatuan)
+
+
+      });
+      $("#satuankerja").on("change", function () {
+        var text = $("#tahun option:selected").text();
+        var datasatuan = $("#satuankerja option:selected").text();
+
+
+        //getChartData()
+      })
+
       const getDataEfieinsiKontrak = (dinas, text) => {
         var api_ = ""
         if (dinas == "SELURUH SATUAN KERJA") {
@@ -291,9 +311,18 @@
           },
 
           columns: [
-            { data: "total_pagu" },
-            { data: "total_kontrak" },
-            { data: "result" }
+            {
+              data: "total_pagu",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            },
+            {
+              data: "total_kontrak",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            },
+            {
+              data: "result",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            }
           ],
         });
       }
@@ -323,9 +352,18 @@
           },
 
           columns: [
-            { data: "total_hps" },
-            { data: "total_kontrak" },
-            { data: "result" }
+            {
+              data: "total_hps",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            },
+            {
+              data: "total_kontrak",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            },
+            {
+              data: "result",
+              render: $.fn.dataTable.render.number(',', '.', 2)
+            }
           ],
         });
       }
