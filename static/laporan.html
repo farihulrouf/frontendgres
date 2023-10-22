@@ -281,7 +281,8 @@
       $("#satuankerja").on("change", function () {
         var text = $("#tahun option:selected").text();
         var datasatuan = $("#satuankerja option:selected").text();
-
+        getData(datasatuan, text)
+        getDataEfieinsiKontrak(datasatuan, text)
 
         //getChartData()
       })
