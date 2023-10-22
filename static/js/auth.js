@@ -24,9 +24,10 @@ else {
 
 const logOut = () => {
       
-       const jwt = localStorage.removeItem('jwt');
-       const user = localStorage.removeItem('user');
-    
+       //const jwt = localStorage.removeItem('jwt');
+      // const user = localStorage.removeItem('user');
+       localStorage.clear()
+
 }
 /*
   var jwt = localStorage.getItem("jwt");
