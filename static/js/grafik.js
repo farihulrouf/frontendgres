@@ -20,7 +20,7 @@ async function Swakelola(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu,
         },
@@ -124,7 +124,7 @@ async function Seleksi(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu_seleksi,
         },
@@ -227,7 +227,7 @@ async function Tender(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu_tender,
         },
@@ -330,7 +330,7 @@ async function Langsung(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu_langsung,
         },
@@ -437,7 +437,7 @@ async function Purchase(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu_purchase,
         },
@@ -540,7 +540,7 @@ async function Kecuali(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_pagu_kecuali,
         },
@@ -643,7 +643,7 @@ async function Pl(tahun, datasatuan) {
       datasets: [
         {
           label: "Pagu",
-          backgroundColor: "blue",
+          backgroundColor: "teal",
           borderColor: "rgb(255, 99, 132)",
           data: nialai_pagu_pl,
         },
