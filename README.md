@@ -1,57 +1,57 @@
 <p align="center">
-  <a href="https://github.com/Blp Gresik/Blp Gresik"><img src="https://Blp Gresik.io/icons/icon-512x512.png" alt="Blp Gresik is a free & open-source HTML dashboard & admin template based on Bootstrap 5" width="96"></a>
+  <a href="https://github.com/LENSA/LENSA"><img src="https://LENSA.io/icons/icon-512x512.png" alt="LENSA is a free & open-source HTML dashboard & admin template based on Bootstrap 5" width="96"></a>
 </p>
 
-<h3 align="center">Blp Gresik</h3>
+<h3 align="center">LENSA</h3>
 
 <p align="center">
-  Blp Gresik is a free & open-source HTML dashboard & admin template based on Bootstrap 5.
+  LENSA is a free & open-source HTML dashboard & admin template based on Bootstrap 5.
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@Blp Gresik/core" rel="nofollow"><img src="https://img.shields.io/npm/v/@Blp Gresik/core" alt="NPM version"></a>
-  <a href="https://github.com/Blp Gresik/Blp Gresik/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
-  <a href="https://github.com/Blp Gresik/Blp Gresik/issues?q=is%3Aopen+is%3Aissue"><img src="https://img.shields.io/github/issues/Blp Gresik/Blp Gresik.svg" alt="GitHub issues open"></a>
-  <a href="https://github.com/Blp Gresik/Blp Gresik/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/Blp Gresik/Blp Gresik.svg" alt="GitHub issues closed"></a>
-  <a href="https://demo.Blp Gresik.io/" rel="nofollow"><img src="https://img.shields.io/badge/demo-online-green.svg" alt="Live Demo"></a>
-  <a href="https://Blp Gresik.io/#download"><img src="https://img.shields.io/static/v1?label=download&message=ZIP&color=green" alt="Download"></a>
+  <a href="https://www.npmjs.com/package/@LENSA/core" rel="nofollow"><img src="https://img.shields.io/npm/v/@LENSA/core" alt="NPM version"></a>
+  <a href="https://github.com/LENSA/LENSA/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+  <a href="https://github.com/LENSA/LENSA/issues?q=is%3Aopen+is%3Aissue"><img src="https://img.shields.io/github/issues/LENSA/LENSA.svg" alt="GitHub issues open"></a>
+  <a href="https://github.com/LENSA/LENSA/issues?q=is%3Aissue+is%3Aclosed"><img src="https://img.shields.io/github/issues-closed-raw/LENSA/LENSA.svg" alt="GitHub issues closed"></a>
+  <a href="https://demo.LENSA.io/" rel="nofollow"><img src="https://img.shields.io/badge/demo-online-green.svg" alt="Live Demo"></a>
+  <a href="https://LENSA.io/#download"><img src="https://img.shields.io/static/v1?label=download&message=ZIP&color=green" alt="Download"></a>
   <br>
-<a href="https://github.com/Blp Gresik/Blp Gresik"><img alt="GitHub stars" src="https://img.shields.io/github/stars/Blp Gresik/Blp Gresik?style=social"></a>
+<a href="https://github.com/LENSA/LENSA"><img alt="GitHub stars" src="https://img.shields.io/github/stars/LENSA/LENSA?style=social"></a>
 </p>
 
 ## Preview
-A professional Admin & Dashboard template based on Bootstrap 5 that comes with hundreds of UI components, forms, tables, charts, pages and icons. Blp Gresik **does not require jQuery** and neither does one of the 3rd party libraries Blp Gresik is using. [Open demo](https://demo.Blp Gresik.io/).
+A professional Admin & Dashboard template based on Bootstrap 5 that comes with hundreds of UI components, forms, tables, charts, pages and icons. LENSA **does not require jQuery** and neither does one of the 3rd party libraries LENSA is using. [Open demo](https://demo.LENSA.io/).
 
-<a href="https://demo.Blp Gresik.io" target="_blank"><img src="https://assets.Blp Gresik.io/banners/github-1280%C3%97640px.png?2" alt="Blp Gresik Demo"></a>
+<a href="https://demo.LENSA.io" target="_blank"><img src="https://assets.LENSA.io/banners/github-1280%C3%97640px.png?2" alt="LENSA Demo"></a>
 
 ## Features
 
-* **Customizable:** You don't need to be an expert to customize Blp Gresik. Our code is very readable and well documented.
-* **Fully Responsive:** With mobile, tablet & desktop support it doesn't matter what device you're using. Blp Gresik is responsive in all browsers.
+* **Customizable:** You don't need to be an expert to customize LENSA. Our code is very readable and well documented.
+* **Fully Responsive:** With mobile, tablet & desktop support it doesn't matter what device you're using. LENSA is responsive in all browsers.
 * **Cross-Browser:** Our themes are working perfectly with Chrome, Firefox, Safari, Opera, and Edge. We're working hard to support them.
 * **Clean Code:** We strictly follow Bootstrap's guidelines to make your integration as easy as possible. All code is handwritten.
-* **No jQuery:** Blp Gresik, and all third-party libraries used in the admin template, do not require jQuery as a dependency.
+* **No jQuery:** LENSA, and all third-party libraries used in the admin template, do not require jQuery as a dependency.
 * **Regular Updates:** From time to time you'll receive an update containing new components, improvements, and bugfixes.
 
 ## Quick start
 
 ### Download
 
-* Clone this repo `git clone https://github.com/Blp Gresik/Blp Gresik.git`
-* [Download from GitHub](https://github.com/Blp Gresik/Blp Gresik/archive/master.zip)
-* [Download from Website](https://Blp Gresik.io/#download)
+* Clone this repo `git clone https://github.com/LENSA/LENSA.git`
+* [Download from GitHub](https://github.com/LENSA/LENSA/archive/master.zip)
+* [Download from Website](https://LENSA.io/#download)
 
 ### Build tools
 
 The theme includes a custom Webpack file, which can be used to quickly recompile and minify theme assets while developing or for deployment. You'll need to install Node.js before using Webpack.
 
-Once Node.js is installed, run npm install to install the rest of Blp Gresik's dependencies. All dependencies will be downloaded to the node_modules directory.
+Once Node.js is installed, run npm install to install the rest of LENSA's dependencies. All dependencies will be downloaded to the node_modules directory.
 
 ```sh
 npm install
 ```
 
-Now you're ready to modify the source files and generate new dist/ files. Blp Gresik uses webpack-dev-server to automatically detect file changes and start a local webserver at http://localhost:8080.
+Now you're ready to modify the source files and generate new dist/ files. LENSA uses webpack-dev-server to automatically detect file changes and start a local webserver at http://localhost:8080.
 
 ```sh
 npm start
@@ -65,25 +65,25 @@ npm run build
 
 ## CDN support
 
-All files included in the `@Blp Gresik/core` npm package are available over a CDN.
+All files included in the `@LENSA/core` npm package are available over a CDN.
 
 **CSS:**
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@Blp Gresik/core@latest/dist/css/app.css">
+<link rel="stylesheet" href="https://unpkg.com/@LENSA/core@latest/dist/css/app.css">
 ```
 
 **Javascript:**
 
 ```html
-<script src="https://unpkg.com/@Blp Gresik/core@latest/dist/js/app.js"></script>
+<script src="https://unpkg.com/@LENSA/core@latest/dist/js/app.js"></script>
 ```
 
 ## File structure
 The package contains the following directories and files:
 
 ```
-Blp Gresik/
+LENSA/
 ├── .babelrc
 ├── .eslintrc
 ├── .nvmrc
@@ -113,26 +113,26 @@ Blp Gresik/
 
 ## Browser Support
 
-| <img src="https://assets.Blp Gresik.io/browsers/edge.png" alt="Edge" width="24px" height="24px" /><br/>Edge | <img src="https://assets.Blp Gresik.io/browsers/firefox.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://assets.Blp Gresik.io/browsers/chrome.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://assets.Blp Gresik.io/browsers/safari.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://assets.Blp Gresik.io/browsers/safari-ios.png" alt="iOS Safari" width="24px" height="24px" /><br/>iOS Safari |
+| <img src="https://assets.LENSA.io/browsers/edge.png" alt="Edge" width="24px" height="24px" /><br/>Edge | <img src="https://assets.LENSA.io/browsers/firefox.png" alt="Firefox" width="24px" height="24px" /><br/>Firefox | <img src="https://assets.LENSA.io/browsers/chrome.png" alt="Chrome" width="24px" height="24px" /><br/>Chrome | <img src="https://assets.LENSA.io/browsers/safari.png" alt="Safari" width="24px" height="24px" /><br/>Safari | <img src="https://assets.LENSA.io/browsers/safari-ios.png" alt="iOS Safari" width="24px" height="24px" /><br/>iOS Safari |
 | --------- | --------- | --------- | --------- | --------- |
 | last version| last 2 versions| last 2 versions| last 2 versions| last 2 versions
 
 ## Resources
 
-* [Demo](https://demo.Blp Gresik.io/)
-* [Website](https://Blp Gresik.io/)
-* [Documentation](https://Blp Gresik.io/docs)
-* [Support](https://Blp Gresik.io/support/)
-* [Affiliate Program](https://Blp Gresik.io/affiliate-program)
+* [Demo](https://demo.LENSA.io/)
+* [Website](https://LENSA.io/)
+* [Documentation](https://LENSA.io/docs)
+* [Support](https://LENSA.io/support/)
+* [Affiliate Program](https://LENSA.io/affiliate-program)
 
 ## Bugs and feature requests
 
-Found a bug or have a feature request? [Please open a new issue](https://github.com/Blp Gresik/Blp Gresik/issues/new).
+Found a bug or have a feature request? [Please open a new issue](https://github.com/LENSA/LENSA/issues/new).
 
 ## Upgrade to PRO
-Get more power with Blp Gresik PRO, a premium variant of Blp Gresik, featuring hundreds of UI components, forms, tables, charts, pages, and icons.
+Get more power with LENSA PRO, a premium variant of LENSA, featuring hundreds of UI components, forms, tables, charts, pages, and icons.
 
-| Free Version        | [Blp Gresik PRO](https://Blp Gresik.io/pricing/) |
+| Free Version        | [LENSA PRO](https://LENSA.io/pricing/) |
 |---------------------|----------------------------------------------|
 | 15 Demo Pages       | ✔ 45+ Demo Pages                             |
 | 1 Plugin            | ✔ 10+ Plugins                                |

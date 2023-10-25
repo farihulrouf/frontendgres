@@ -1,7 +1,7 @@
 {
-  "name": "@Blp Gresik/core",
+  "name": "@LENSA/core",
   "version": "3.4.0",
-  "description": "Blp Gresik - Bootstrap 5 Admin Template",
+  "description": "LENSA - Bootstrap 5 Admin Template",
   "keywords": [
     "bootstrap",
     "bootstrap 5",
@@ -19,16 +19,16 @@
     "ui kit",
     "web"
   ],
-  "homepage": "https://Blp Gresik.io/",
+  "homepage": "https://LENSA.io/",
   "bugs": {
-    "url": "https://github.com/Blp Gresik/Blp Gresik/issues"
+    "url": "https://github.com/LENSA/LENSA/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Blp Gresik/Blp Gresik.git"
+    "url": "git+https://github.com/LENSA/LENSA.git"
   },
   "license": "MIT",
-  "author": "Paul Laros <support@Blp Gresik.io>",
+  "author": "Paul Laros <support@LENSA.io>",
   "files": [
     "dist"
   ],

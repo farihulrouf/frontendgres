@@ -1,6 +1,6 @@
 import "../scss/app.scss";
 
-// Blp Gresik (required)
+// LENSA (required)
 import "./modules/bootstrap";
 import "./modules/sidebar";
 import "./modules/theme";
