@@ -416,7 +416,7 @@
     })
 
     function load_data(tahun, datasatuan) {
-      
+
       Swakelola(tahun, datasatuan)
       Seleksi(tahun, datasatuan)
       Tender(tahun, datasatuan)
@@ -424,7 +424,7 @@
       Purchase(tahun, datasatuan)
       Kecuali(tahun, datasatuan)
       Pl(tahun, datasatuan)
-     // Langsung(tahun, datasatuan)
+      // Langsung(tahun, datasatuan)
       // clear_data()
       var data_api = ''
       if (datasatuan == 'SELURUH SATUAN KERJA') {
@@ -445,18 +445,18 @@
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title"><a href="${r["url"]}.html">${r["metode_pengadaan"]}</a></h5>
+														<h5 class="card-title text-white silver"><a href="${r["url"]}.html">${r["metode_pengadaan"]}</a></h5>
 													</div>
 
 													<div class="col-auto">
-														<div class="stat text-primary">
+														<div class="stat bg-success">
 															<i class="align-middle" data-feather="truck"></i>
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">${r["jumlah"]}</h1>
+												<h1 class="mt-1 mb-3 text-white">${r["jumlah"]}</h1>
 												<div class="mb-0">
-													<span class="text-primary"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${r["total"].toString()
+													<span class="text-primary text-white"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${r["total"].toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
 													<span class="text-muted">Hps</span>
 												</div>
@@ -472,7 +472,7 @@
     var metode_name = [], metode_pengadaan_total = [], metode_jumlah = []
 
     async function dataChart(tahun, datasatuan) {
-     // console.log('informasi', tahun, datasatuan)
+      // console.log('informasi', tahun, datasatuan)
       await getChartData(tahun, datasatuan)
 
       const ctx = document.getElementById('myChart').getContext('2d');
@@ -501,8 +501,20 @@
 
         // Configuration options go here
         options: {
-          tooltips: {
-            mode: 'index'
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  callback: function (label, index, labels) {
+                    return (label / 1000).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') + 'K';
+                  }
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: '1K = 1000'
+                }
+              }
+            ]
           }
         }
       })
@@ -517,10 +529,10 @@
 
       var api_ = ""
       if (satuan == "SELURUH SATUAN KERJA") {
-         api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun="+tahun
-       }
+        api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+      }
       else {
-         api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun="+tahun+'&sk='+satuan
+        api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun + '&sk=' + satuan
       }
 
       //const apiUrl = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
