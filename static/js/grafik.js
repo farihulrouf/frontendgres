@@ -38,7 +38,7 @@ async function Swakelola(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps,
         },
@@ -142,7 +142,7 @@ async function Seleksi(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_seleksi,
         },
@@ -245,7 +245,7 @@ async function Tender(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_tender,
         },
@@ -350,7 +350,7 @@ async function Langsung(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_langsung,
         },
@@ -455,7 +455,7 @@ async function Purchase(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_urchase,
         },
@@ -558,7 +558,7 @@ async function Kecuali(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_kecuali,
         },
@@ -661,7 +661,7 @@ async function Pl(tahun, datasatuan) {
         },
         {
           label: "HPS",
-          backgroundColor: "yellow",
+          backgroundColor: "orange",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_hps_pl,
         },
