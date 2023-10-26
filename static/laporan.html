@@ -138,23 +138,29 @@
                     <tr>
                       <th>Total Hps</th>
                       <th>Total kontrak</th>
-                      <th>Hasil</th>
+                      <th>Hasil Efisiensi</th>
                     </tr>
                   </thead>
                 </table>
+                <div class="mt-6">
+                  <canvas id="pagukontrakid"></canvas>
+                </div>
+
               </div>
               <div class="col-12 col-lg-12">
-
                 <h4 class="mt-4 mb-4">2-Total Efisiensi hps terhadap kontrak</h4>
                 <table id="efisiensi" class="display" cellspacing="0" width="100%">
                   <thead>
                     <tr>
                       <th>Total Hps</th>
                       <th>Total kontrak</th>
-                      <th>Hasil</th>
+                      <th>Hasil Efisiensi</th>
                     </tr>
                   </thead>
                 </table>
+                <div class="mt-6">
+                  <canvas id="pagukontrakhps"></canvas>
+                </div>
               </div>
 
             </div>
@@ -202,12 +208,15 @@
       integrity="sha256-CjSoeELFOcH0/uxWu6mC/Vlrc1AARqbm/jiiImDGV3s=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <!-- Hierarchy Select Js -->
     <script src="js/hierarchy-select.min.js"></script>
     <script>
       const loadData = () => {
         getData('SELURUH SATUAN KERJA', '2023')
         getDataEfieinsiKontrak('SELURUH SATUAN KERJA', '2023')
+        pagukontrak('2023', 'SELURUH SATUAN KERJA')
+        pagukontrakhps('2023', 'SELURUH SATUAN KERJA')
       }
       $(document).ready(function () {
         var satker = [
@@ -274,6 +283,7 @@
         var datasatuan = $("#satuankerja option:selected").text();
         getData(datasatuan, text)
         getDataEfieinsiKontrak(datasatuan, text)
+        
         // console.log(datasatuan)
 
 
@@ -368,6 +378,207 @@
           ],
         });
       }
+
+
+      var bulan = [],
+        nilai_pagu = [],
+        // metode_jumlah = [],
+        nilai_kontrak = [],
+        nilai_hps = [];
+      //console.log('tester')
+      async function pagukontrak(tahun, datasatuan) {
+        // console.log('informasi', tahun, datasatuan)
+        await getPaguKonrak(tahun, datasatuan);
+
+        const ctx = document.getElementById("pagukontrakid").getContext("2d");
+
+        const chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: "bar",
+
+          // The data for our dataset
+          data: {
+            labels: ["Total Hps", "Total Kontrak", "Efisiensi"],
+            //  labels: metode_name,
+            datasets: [
+              {
+                label: "Total HPS",
+                backgroundColor: "teal",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_pagu,
+              },
+
+              {
+                label: "Total Kontrak",
+                backgroundColor: "green",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_kontrak,
+              },
+              {
+                label: "Efisiensi",
+                backgroundColor: "yellow",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_hps,
+              },
+            ],
+          },
+
+          // Configuration options go here
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    callback: function (label, index, labels) {
+                      return (
+                        (label / 1000)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,") + "K"
+                      );
+                    },
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: "1K = 1000",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+
+      async function getPaguKonrak(tahun, satuan) {
+        var api_ = "";
+        if (satuan == "SELURUH SATUAN KERJA") {
+          api_ =
+            "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + tahun;
+        } else {
+          api_ =
+            "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" +
+            tahun +
+            "&sk=" +
+            satuan;
+        }
+
+        //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+
+        const response = await fetch(api_);
+        const barChatData = await response.json();
+
+        const pagu = barChatData.data.map((x) => x.total_pagu);
+        //console.log(pagu)
+        //  const jumlah = barChatData.data.map((x) => x.jumlah);
+        // const name = barChatData.data.map((x) => x.bulan);
+        const kontrak = barChatData.data.map((x) => x.total_kontrak);
+        const hps = barChatData.data.map((x) => x.result);
+
+        nilai_pagu = pagu;
+        // metode_jumlah = jumlah;
+        //metode_name = name;
+        nilai_kontrak = kontrak;
+        nilai_hps = hps;
+      }
+
+      var nilai_pagu_hps = [],
+        // metode_jumlah = [],
+        nilai_kontrak_dua = [],
+        nilai_hps_dua = [];
+      //console.log('tester')
+      async function pagukontrakhps(tahun, datasatuan) {
+        // console.log('informasi', tahun, datasatuan)
+        await getPaguKonrakHps(tahun, datasatuan);
+
+        const ctx = document.getElementById("pagukontrakhps").getContext("2d");
+
+        const chart = new Chart(ctx, {
+          // The type of chart we want to create
+          type: "bar",
+
+          // The data for our dataset
+          data: {
+            labels: ["Total Hps", "Total Kontrak", "Efisiensi"],
+            //  labels: metode_name,
+            datasets: [
+              {
+                label: "Total HPS",
+                backgroundColor: "teal",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_pagu_hps,
+              },
+
+              {
+                label: "Total Kontrak",
+                backgroundColor: "green",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_kontrak_dua,
+              },
+              {
+                label: "Efisiensi",
+                backgroundColor: "yellow",
+                borderColor: "rgb(255, 99, 132)",
+                data: nilai_hps_dua,
+              },
+            ],
+          },
+
+          // Configuration options go here
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    callback: function (label, index, labels) {
+                      return (
+                        (label / 1000)
+                          .toFixed(2)
+                          .replace(/\d(?=(\d{3})+\.)/g, "$&,") + "K"
+                      );
+                    },
+                  },
+                  scaleLabel: {
+                    display: true,
+                    labelString: "1K = 1000",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+
+      async function getPaguKonrakHps(tahun, satuan) {
+        var api_ = "";
+        if (satuan == "SELURUH SATUAN KERJA") {
+          api_ =
+            "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + tahun;
+        } else {
+          api_ =
+            "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" +
+            tahun +
+            "&sk=" +
+            satuan;
+        }
+
+        //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+
+        const response = await fetch(api_);
+        const barChatData = await response.json();
+
+        const pagu = barChatData.data.map((x) => x.total_hps);
+        //console.log(pagu)
+        //  const jumlah = barChatData.data.map((x) => x.jumlah);
+        // const name = barChatData.data.map((x) => x.bulan);
+        const kontrak = barChatData.data.map((x) => x.total_kontrak);
+        const hps = barChatData.data.map((x) => x.result);
+
+        nilai_pagu_hps = pagu;
+        // metode_jumlah = jumlah;
+        //metode_name = name;
+        nilai_kontrak_dua = kontrak;
+        nilai_hps_dua = hps;
+      }
+
     </script>
 </body>
 
