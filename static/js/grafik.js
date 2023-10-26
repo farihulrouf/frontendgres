@@ -32,7 +32,7 @@ async function Swakelola(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak,
         },
@@ -136,7 +136,7 @@ async function Seleksi(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak_seleksi,
         },
@@ -239,7 +239,7 @@ async function Tender(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak,
         },
@@ -342,7 +342,7 @@ async function Langsung(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: new Intl.NumberFormat("en-IN", {
             maximumSignificantDigits: 3,
@@ -449,7 +449,7 @@ async function Purchase(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak,
         },
@@ -552,7 +552,7 @@ async function Kecuali(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak,
         },
@@ -655,7 +655,7 @@ async function Pl(tahun, datasatuan) {
         },
         {
           label: "Kontrak",
-          backgroundColor: "green",
+          backgroundColor: "#063871",
           borderColor: "rgb(255, 99, 132)",
           data: nilai_kontrak,
         },
