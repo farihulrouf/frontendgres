@@ -108,13 +108,13 @@
                         </select>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                        <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
                             <option value="" selected hidden>SELURUH SATUAN KERJA</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                
+
             </nav>
 
             <main class="content">
@@ -139,6 +139,9 @@
                                 </thead>
                             </table>
                         </div>
+                    </div>
+                    <div>
+                        <canvas id="myChart" ></canvas>
                     </div>
                 </div>
             </main>
@@ -193,7 +196,7 @@
     <script>
         $(document).ready(function () {
             var satker = [
-                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
                 "BADAN KESATUAN BANGSA DAN POLITIK",
                 "BADAN PENANGGULANGAN BENCANA DAERAH",
                 "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
@@ -278,50 +281,104 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Tender'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Tender'+'&satuan='+dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
-                
+
                 {
                     "url": "https://lpse-gresik.cloud/api/datapakets/getpenyedia",
                     "type": "GET",
                     "dataType": "JSON"
                 },
-            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-        //}
+                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+                //}
                 columns: [
-                  
+
                     { data: "npwp" },
-                    { data: "nama",
-                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html('<a href="javascript:detailPenyedia(\''+oData.npwp+'\',\''+oData.id+'\',\''+oData.nama+'\',\''+oData.alamat+'\',\''+oData.notel+'\')">' +oData.nama+'</a>');
+                    {
+                        data: "nama",
+                        "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                            $(nTd).html('<a href="javascript:detailPenyedia(\'' + oData.npwp + '\',\'' + oData.id + '\',\'' + oData.nama + '\',\'' + oData.alamat + '\',\'' + oData.notel + '\')">' + oData.nama + '</a>');
                         }
-                     },
+                    },
                     { data: "alamat" },
                     { data: "notel" },
-                    { data: "jumlah"}
-                    
+                    { data: "jumlah" }
+
                 ],
             });
         }
 
-        function detailPenyedia(npwp, id, nama, alamat, notel, jumlah){
-            const infopenyedia = {npwp:npwp, id:id, nama:nama, alamat: alamat, notel: notel, jumlah: jumlah};
-        
+        function detailPenyedia(npwp, id, nama, alamat, notel, jumlah) {
+            const infopenyedia = { npwp: npwp, id: id, nama: nama, alamat: alamat, notel: notel, jumlah: jumlah };
+
             localStorage.setItem('penyedia', JSON.stringify(infopenyedia));
 
 
             window.location.href = "detail-penyedia.html";
         }
 
+        var employeeLabel = [], employeeSalaryData = [], employeeAgeData = []
+
+        async function dummyChart() {
+            await getDummyData()
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+
+            const chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: 'bar',
+
+                // The data for our dataset
+                data: {
+                    labels: employeeLabel,
+                    datasets: [{
+                        label: 'Jumlah kemenangan',
+                        backgroundColor: 'teal',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: employeeSalaryData
+                    },
+                   //
+                    ]
+                },
+
+                // Configuration options go here
+                options: {
+                    tooltips: {
+                        mode: 'index'
+                    }
+                }
+            })
+        }
+
+        dummyChart()
+
+
+        //Fetch Data from API
+
+        async function getDummyData() {
+            const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getpenyedia"
+
+            const response = await fetch(apiUrl)
+            const barChatData = await response.json()
+
+            const jumlah = barChatData.data.map((x) => x.jumlah)
+            console.log(jumlah)
+           // const age = barChatData.data.map((x) => x.employee_age)
+            const name = barChatData.data.map((x) => x.nama)
+
+            employeeSalaryData = jumlah
+           // employeeAgeData = age
+            employeeLabel = name
+        }
     </script>
 </body>
 
