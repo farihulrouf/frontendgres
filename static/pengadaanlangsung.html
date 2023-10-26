@@ -65,7 +65,7 @@
                         </a>
                     </li>
 
-             
+
                     <li class="sidebar-header">Report</li>
 
                     <li class="sidebar-item">
@@ -101,13 +101,13 @@
                         </select>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                        <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
                             <option value="" selected hidden>SELURUH SATUAN KERJA</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                
+
             </nav>
 
             <main class="content">
@@ -127,7 +127,7 @@
                                         <th>Satuan Kerja</th>
                                         <th>Nama paket</th>
                                         <th>Metode Pengadaan.</th>
-                                      
+
                                         <th>Tanggal Kontrak</th>
                                         <th>Awal Pelaksanaan</th>
                                         <th>Akhir Pelaksanaan</th>
@@ -136,6 +136,9 @@
                                     </tr>
                                 </thead>
                             </table>
+                        </div>
+                        <div class="mt-6">
+                            <canvas id="pengadaanlangsung"></canvas>
                         </div>
                     </div>
                 </div>
@@ -191,7 +194,7 @@
     <script>
         $(document).ready(function () {
             var satker = [
-                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
                 "BADAN KESATUAN BANGSA DAN POLITIK",
                 "BADAN PENANGGULANGAN BENCANA DAERAH",
                 "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
@@ -253,6 +256,7 @@
     <script>
         function loadData() {
             getData('2023', 'SELURUH SATUAN KERJA')
+            Langsung('2023', 'SELURUH SATUAN KERJA')
         }
 
         $("#tahun").on("change", function () {
@@ -276,43 +280,159 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Pengadaan Langsung'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengadaan Langsung'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Pengadaan Langsung'+'&satuan='+dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengadaan Langsung' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
-                
+
                 {
                     "url": api_,
                     "type": "GET",
                     "dataType": "JSON"
                 },
-            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-        //}
+                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+                //}
                 columns: [
                     { data: "kode_rup" },
                     { data: "satuan_kerja" },
-                    { data: "nama_paket",
+                    {
+                        data: "nama_paket",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html("<a href='detail-project.html'>"+oData.nama_paket+"</a>");
+                            $(nTd).html("<a href='detail-project.html'>" + oData.nama_paket + "</a>");
                         }
-                     },
+                    },
                     { data: "metode_pengadaan" },
-                 
+
                     { data: "tgl_kontrak" },
                     { data: "awal_pelaksanaan" },
                     { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak",
-                    render: $.fn.dataTable.render.number(',', '.', 2) },
+                    {
+                        data: "nilai_kontrak",
+                        render: $.fn.dataTable.render.number(',', '.', 2)
+                    },
                     { data: "progress" },
                 ],
             });
+        }
+
+        var bulan_langsung = [],
+            nilai_pagu_langsung = [],
+            metode_jumlah_langsung = [],
+            nilai_konrak_langsung = [],
+            nilai_hps_langsung = [];
+        var bulan = [],
+            nilai_pagu = [],
+            metode_jumlah = [],
+            nilai_kontrak = [],
+            nilai_hps = [];
+        //console.log('tester
+        //console.log('tester')
+        async function Langsung(tahun, datasatuan) {
+            // console.log('informasi', tahun, datasatuan)
+            await getChartLangsung(tahun, datasatuan);
+
+            const ctx = document.getElementById("pengadaanlangsung").getContext("2d");
+
+            const chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: "line",
+
+                // The data for our dataset
+                data: {
+                    labels: metode_name,
+                    datasets: [
+                        {
+                            label: "Pagu",
+                            backgroundColor: "teal",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: nilai_pagu_langsung,
+                        },
+                        {
+                            label: "Jumlah",
+                            backgroundColor: "pink",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: metode_jumlah_langsung,
+                        },
+                        {
+                            label: "Kontrak",
+                            backgroundColor: "green",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: new Intl.NumberFormat("en-IN", {
+                                maximumSignificantDigits: 3,
+                            }).format(nilai_kontrak),
+                        },
+                        {
+                            label: "HPS",
+                            backgroundColor: "yellow",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: nilai_hps_langsung,
+                        },
+                    ],
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    callback: function (label, index, labels) {
+                                        return (
+                                            (label / 1000)
+                                                .toFixed(2)
+                                                .replace(/\d(?=(\d{3})+\.)/g, "$&,") + "K"
+                                        );
+                                    },
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "1K = 1000",
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+        }
+
+        async function getChartLangsung(tahun, satuan) {
+            var api_ = "";
+            if (satuan == "SELURUH SATUAN KERJA") {
+                api_ =
+                    "https://lpse-gresik.cloud/api/datapakets/getpengadaanlangsung?tahun=" +
+                    tahun;
+            } else {
+                api_ =
+                    "https://lpse-gresik.cloud/api/datapakets/getpengadaanlangsung?tahun=" +
+                    tahun +
+                    "&sk=" +
+                    satuan;
+            }
+
+            //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+
+            const response = await fetch(api_);
+            const barChatData = await response.json();
+
+            const pagu = barChatData.data.map((x) => x.pagu);
+            //console.log(pagu)
+            const jumlah = barChatData.data.map((x) => x.jumlah);
+            const name = barChatData.data.map((x) => x.bulan);
+            const kontrak = barChatData.data.map((x) => x.nilai_kontrak);
+            const hps = barChatData.data.map((x) => x.nilai_hps);
+
+            nilai_pagu_langsung = pagu;
+            metode_jumlah_langsung = jumlah;
+            metode_name = name;
+            nilai_konrak_langsung = kontrak;
+            nilai_hps_langsung = hps;
         }
 
     </script>
