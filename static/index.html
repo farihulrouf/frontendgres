@@ -152,13 +152,15 @@
           <div class="row">
             <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
               <div class="chart chart-sm">
-                <h5 class="card-title  mb-4 mt-4 bg-info p-2"><a href="#" class="text-white">Penunjukan Langsung</a></h5>
+                <h5 class="card-title  mb-4 mt-4 bg-info p-2"><a href="#" class="text-white">Penunjukan Langsung</a>
+                </h5>
                 <canvas id="getpl"></canvas>
               </div>
             </div>
             <div class="col-12 col-md-6 col-xxl-4 d-flex order-1 order-xxl-1">
               <div class="chart chart-sm">
-                <h5 class="card-title mb-4 mt-4 bg-success p-2"><a href="seleksi.html" class="text-white">Pengadaan Seleksi</a></h5>
+                <h5 class="card-title mb-4 mt-4 bg-success p-2"><a href="seleksi.html" class="text-white">Pengadaan
+                    Seleksi</a></h5>
                 <canvas id="seleksi"></canvas>
               </div>
             </div>
@@ -456,10 +458,9 @@
 												</div>
 												<div class="d-flex align-items-center gap-2">
                           <h1 class="mt-1 mb-3 text-white">${r["jumlah"]}</h1><p class="text-white">Paket</p>
-                        </div>
-												<div class="mb-0">
-													<span class="text-primary text-white"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${r["total"].toString()
-                .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
+                        </div> 
+												<div class="mb-0 d-flex gap-2">
+													<h4 class="text-primary text-white"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${nFormatter(r["total"])}</h4>
 													<span class="text-white">Hps</span>
 												</div>
 											</div>
@@ -550,6 +551,19 @@
       metode_pengadaan_total = total
       metode_jumlah = jumlah
       metode_name = name
+    }
+    const nFormatter = (num) => {
+      if (num >= 1000000000) {
+        return (num / 1000000000).toFixed(1).replace(/\.0$/, '') + ' ' + 'M';
+      }
+      
+      if (num >= 1000000) {
+        return (num / 1000000).toFixed(1).replace(/\.0$/, '') + ' ' + 'R';
+      }
+      if (num >= 1000) {
+        return (num / 1000).toFixed(1).replace(/\.0$/, '') + ' ' + 'K';
+      }
+      return num;
     }
   </script>
   <script src="js/grafik.js"></script>
