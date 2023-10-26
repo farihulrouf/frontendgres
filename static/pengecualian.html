@@ -28,43 +28,43 @@
     <div class="wrapper">
         <nav id="sidebar" class="sidebar js-sidebar">
             <div class="sidebar-content js-simplebar">
-              <a class="sidebar-brand" href="index.html">
-                <span class="align-middle">LENSA</span>
-              </a>
-      
-              <ul class="sidebar-nav">
-                <li class="sidebar-header">Pages</li>
-      
-                <li class="sidebar-item active">
-                  <a class="sidebar-link" href="index.html">
-                    <i class="align-middle" data-feather="sliders"></i>
-                    <span class="align-middle">Dashboard</span>
-                  </a>
-                </li>
-      
-                <li class="sidebar-header">Data list</li>
-      
-                <li class="sidebar-item">
-                  <a class="sidebar-link" href="datamaster.html">
-                    <i class="align-middle" data-feather="square"></i>
-                    <span class="align-middle">Data Master</span>
-                  </a>
-                </li>
-      
-                <li class="sidebar-item">
-                  <a class="sidebar-link" href="monitoring.html">
-                    <i class="align-middle" data-feather="check-square"></i>
-                    <span class="align-middle">Monitoring</span>
-                  </a>
-                </li>
-      
-                <li class="sidebar-item">
-                  <a class="sidebar-link" href="penyedia.html">
-                    <i class="align-middle" data-feather="align-left"></i>
-                    <span class="align-middle">Penyedia</span>
-                  </a>
-                </li>
-                <!--
+                <a class="sidebar-brand" href="index.html">
+                    <span class="align-middle">LENSA</span>
+                </a>
+
+                <ul class="sidebar-nav">
+                    <li class="sidebar-header">Pages</li>
+
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link" href="index.html">
+                            <i class="align-middle" data-feather="sliders"></i>
+                            <span class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-header">Data list</li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="datamaster.html">
+                            <i class="align-middle" data-feather="square"></i>
+                            <span class="align-middle">Data Master</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="monitoring.html">
+                            <i class="align-middle" data-feather="check-square"></i>
+                            <span class="align-middle">Monitoring</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="penyedia.html">
+                            <i class="align-middle" data-feather="align-left"></i>
+                            <span class="align-middle">Penyedia</span>
+                        </a>
+                    </li>
+                    <!--
                 <li class="sidebar-item">
                   <a class="sidebar-link" href="jasa-konsultasi.html">
                     <i class="align-middle" data-feather="coffee"></i>
@@ -72,34 +72,34 @@
                   </a>
                 </li>
               -->
-                <li class="sidebar-header">Report</li>
-      
-                <li class="sidebar-item">
-                  <a class="sidebar-link" href="laporan.html">
-                    <i class="align-middle" data-feather="bar-chart-2"></i>
-                    <span class="align-middle">Laporan</span>
-                  </a>
-                </li>
-                <!--
+                    <li class="sidebar-header">Report</li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="laporan.html">
+                            <i class="align-middle" data-feather="bar-chart-2"></i>
+                            <span class="align-middle">Laporan</span>
+                        </a>
+                    </li>
+                    <!--
                           <li class="sidebar-item">
                               <a class="sidebar-link" href="maps-google.html">
                                   <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
                               </a>
                           </li>
                           -->
-              </ul>
-      
-              <div class="sidebar-cta">
-                <div class="sidebar-cta-content">
-                  <strong class="d-inline-block mb-2">Kontak</strong>
-                  <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
-                  <div class="d-grid">
-                    <a href="#" class="btn btn-primary">Kontak kami</a>
-                  </div>
+                </ul>
+
+                <div class="sidebar-cta">
+                    <div class="sidebar-cta-content">
+                        <strong class="d-inline-block mb-2">Kontak</strong>
+                        <div class="mb-3 text-sm">Dapatkan informasi lebih lanjut</div>
+                        <div class="d-grid">
+                            <a href="#" class="btn btn-primary">Kontak kami</a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </nav>
+        </nav>
 
         <div class="main">
             <nav class="navbar navbar-expand navbar-light navbar-bg">
@@ -114,13 +114,13 @@
                         </select>
                     </div>
                     <div class="col-lg-8">
-                        <select class="form-select style-select"  aria-label="Default select example"  id="satuankerja">
+                        <select class="form-select style-select" aria-label="Default select example" id="satuankerja">
                             <option value="" selected hidden>SELURUH SATUAN KERJA</option>
                             <option></option>
                         </select>
                     </div>
                 </div>
-                
+
             </nav>
 
             <main class="content">
@@ -140,7 +140,7 @@
                                         <th>Satuan Kerja</th>
                                         <th>Nama paket</th>
                                         <th>Metode Pengadaan.</th>
-                                      
+
                                         <th>Tanggal Kontrak</th>
                                         <th>Awal Pelaksanaan</th>
                                         <th>Akhir Pelaksanaan</th>
@@ -150,10 +150,13 @@
                                 </thead>
                             </table>
                         </div>
+                        <div class="mt-6">
+                            <canvas id="kecuali"></canvas>
+                        </div>
                     </div>
                 </div>
             </main>
-                
+
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="row text-muted">
@@ -204,7 +207,7 @@
     <script>
         $(document).ready(function () {
             var satker = [
-                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA", 
+                "BADAN KEPEGAWAIAN DAERAH DAN PENGEMBANGAN SUMBER DAYA MANUSIA",
                 "BADAN KESATUAN BANGSA DAN POLITIK",
                 "BADAN PENANGGULANGAN BENCANA DAERAH",
                 "BADAN PENDAPATAN PENGELOLAAN KEUANGAN DAN ASET DAERAH",
@@ -266,6 +269,7 @@
     <script>
         function loadData() {
             getData('2023', 'SELURUH SATUAN KERJA')
+            Kecuali('2023', 'SELURUH SATUAN KERJA')
         }
 
         $("#tahun").on("change", function () {
@@ -286,60 +290,173 @@
 
         });
 
+        var bulan_kecuali = [],
+            nilai_pagu_kecuali = [],
+            metode_jumlah_kecuali = [],
+            nilai_kontrak_kecuali = [],
+            nilai_hps_kecuali = [];
+        var bulan = [],
+            nilai_pagu = [],
+            metode_jumlah = [],
+            nilai_kontrak = [],
+            nilai_hps = [];
+        //console.log('tes
+        //console.log('tester')
+        async function Kecuali(tahun, datasatuan) {
+            // console.log('informasi', tahun, datasatuan)
+            await getKecuali(tahun, datasatuan);
+
+            const ctx = document.getElementById("kecuali").getContext("2d");
+
+            const chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: "line",
+
+                // The data for our dataset
+                data: {
+                    labels: metode_name,
+                    datasets: [
+                        {
+                            label: "Pagu",
+                            backgroundColor: "teal",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: nilai_pagu_kecuali,
+                        },
+                        {
+                            label: "Jumlah",
+                            backgroundColor: "pink",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: metode_jumlah_kecuali,
+                        },
+                        {
+                            label: "Kontrak",
+                            backgroundColor: "green",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: nilai_kontrak,
+                        },
+                        {
+                            label: "HPS",
+                            backgroundColor: "yellow",
+                            borderColor: "rgb(255, 99, 132)",
+                            data: nilai_hps_kecuali,
+                        },
+                    ],
+                },
+
+                // Configuration options go here
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    callback: function (label, index, labels) {
+                                        return (
+                                            (label / 1000)
+                                                .toFixed(2)
+                                                .replace(/\d(?=(\d{3})+\.)/g, "$&,") + "K"
+                                        );
+                                    },
+                                },
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: "1K = 1000",
+                                },
+                            },
+                        ],
+                    },
+                },
+            });
+        }
+
+        async function getKecuali(tahun, satuan) {
+            var api_ = "";
+            if (satuan == "SELURUH SATUAN KERJA") {
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" + tahun;
+            } else {
+                api_ =
+                    "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" +
+                    tahun +
+                    "&sk=" +
+                    satuan;
+            }
+
+            //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+
+            const response = await fetch(api_);
+            const barChatData = await response.json();
+
+            const pagu = barChatData.data.map((x) => x.pagu);
+            //console.log(pagu)
+            const jumlah = barChatData.data.map((x) => x.jumlah);
+            const name = barChatData.data.map((x) => x.bulan);
+            const kontrak = barChatData.data.map((x) => x.nilai_kontrak);
+            const hps = barChatData.data.map((x) => x.nilai_hps);
+
+            nilai_pagu_kecuali = pagu;
+            metode_jumlah_kecuali = jumlah;
+            metode_name = name;
+            nilai_kontrak_kecuali = kontrak;
+            nilai_hps_kecuali = hps;
+        }
+
+
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Pengecualian'
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun="+text+'&metode=Pengecualian'+'&satuan='+dinas
+                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
                 prerender: true,
                 destroy: true,
                 ajax:
-                
+
                 {
                     "url": api_,
                     "type": "GET",
                     "dataType": "JSON"
                 },
-            //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-            //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
-        //}
+                //    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
+                //$(nTd).html("<a href='tel:"+oData.TelephoneNumber+"'>"+oData.TelephoneNumber+"</a>");
+                //}
                 columns: [
                     { data: "kode_rup" },
                     { data: "satuan_kerja" },
-                    { data: "nama_paket",
+                    {
+                        data: "nama_paket",
                         "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                            $(nTd).html('<a href="javascript:callModal(\''+oData.kode_rup+'\',\''+oData.nama_paket+'\',\''+oData.satuan_kerja+'\',\''+oData.nilai_kontrak+'\')">' +oData.nama_paket+'</a>');
+                            $(nTd).html('<a href="javascript:callModal(\'' + oData.kode_rup + '\',\'' + oData.nama_paket + '\',\'' + oData.satuan_kerja + '\',\'' + oData.nilai_kontrak + '\')">' + oData.nama_paket + '</a>');
                         }
-                     },
+                    },
                     // $(nTd).html("<a href=#"+"onclick='callModal('data');'>" + oData.nama_paket + "</a>"
                     { data: "metode_pengadaan" },
-                   
+
                     { data: "tgl_kontrak" },
                     { data: "awal_pelaksanaan" },
                     { data: "akhir_pelaksanaan" },
-                    { data: "nilai_kontrak",
-                    render: $.fn.dataTable.render.number(',', '.', 2) },
+                    {
+                        data: "nilai_kontrak",
+                        render: $.fn.dataTable.render.number(',', '.', 2)
+                    },
                     { data: "progress" },
                 ],
             });
         }
-        function callModal(data,nama_paket, satker, nilai_kontrak, metode){
-           // console.log('fungsi di panggil', data)
-            const dataPaket = {kode_rup:data, nama_paket:nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode};
-          //  console.log(dataPaket.kode_rup)
-           // console.log(dataPaket)
+        function callModal(data, nama_paket, satker, nilai_kontrak, metode) {
+            // console.log('fungsi di panggil', data)
+            const dataPaket = { kode_rup: data, nama_paket: nama_paket, satker: satker, nilai_kontrak: nilai_kontrak, metode_pengadaan: metode };
+            //  console.log(dataPaket.kode_rup)
+            // console.log(dataPaket)
             localStorage.setItem('datapaket', JSON.stringify(dataPaket));
 
 
             //const datax = JSON.parse(localStorage.getItem('datapaket'));
 
 
-           // const datax = localStorage.getItem('datapaket');
+            // const datax = localStorage.getItem('datapaket');
             //console.log(datax.kode_rup)
             //const todos = [data, nama_paket, satker, nilai_kontrak ];
             //localStorage.setItem("inputValue", dataPaket);
