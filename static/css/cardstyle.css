@@ -3,6 +3,9 @@
     box-shadow: 5px 10px white;
     background: #063871;
 }
+.card-style:hover {
+  background: orange;
+}
 .style-select {
     width: 500px;
 }
