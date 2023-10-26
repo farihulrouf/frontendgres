@@ -454,11 +454,13 @@
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3 text-white">${r["jumlah"]}</h1>
+												<div class="d-flex align-items-center gap-2">
+                          <h1 class="mt-1 mb-3 text-white">${r["jumlah"]}</h1><p class="text-white">Paket</p>
+                        </div>
 												<div class="mb-0">
 													<span class="text-primary text-white"> <i class="mdi mdi-arrow-bottom-right"></i>Rp ${r["total"].toString()
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</span>
-													<span class="text-muted">Hps</span>
+													<span class="text-white">Hps</span>
 												</div>
 											</div>
 										</div>
