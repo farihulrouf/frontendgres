@@ -140,7 +140,7 @@
                             </table>
                         </div>
                     </div>
-                    <div>
+                    <div class="mt-6 mb-6">
                         <canvas id="myChart" ></canvas>
                     </div>
                 </div>
@@ -328,14 +328,14 @@
 
         var employeeLabel = [], employeeSalaryData = [], employeeAgeData = []
 
-        async function dummyChart() {
-            await getDummyData()
+        async function showChart() {
+            await getChrtPenyedia()
 
             const ctx = document.getElementById('myChart').getContext('2d');
 
             const chart = new Chart(ctx, {
                 // The type of chart we want to create
-                type: 'bar',
+                type: 'polarArea',
 
                 // The data for our dataset
                 data: {
@@ -359,12 +359,12 @@
             })
         }
 
-        dummyChart()
+        showChart()
 
 
         //Fetch Data from API
 
-        async function getDummyData() {
+        async function getChrtPenyedia() {
             const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getpenyedia"
 
             const response = await fetch(apiUrl)
