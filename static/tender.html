@@ -281,10 +281,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender'
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=Tender'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Tender' + '&satuan=' + dinas
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=Tender' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -401,16 +401,16 @@
         async function getChartTender(tahun, satuan) {
             var api_ = "";
             if (satuan == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getender?tahun=" + tahun;
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getender?tahun=" + tahun;
             } else {
                 api_ =
-                    "https://lpse-gresik.cloud/api/datapakets/getender?tahun=" +
+                    "https://lpse.gempa-iot.masuk.id/api/datapakets/getender?tahun=" +
                     tahun +
                     "&sk=" +
                     satuan;
             }
 
-            //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+            //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
             const response = await fetch(api_);
             const barChatData = await response.json();

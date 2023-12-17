@@ -283,10 +283,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=E-Purchasing'
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=E-Purchasing'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=E-Purchasing' + '&satuan=' + dinas
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=E-Purchasing' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({
@@ -423,16 +423,16 @@
         async function getChartPurchase(tahun, satuan) {
             var api_ = "";
             if (satuan == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getpuchas?tahun=" + tahun;
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getpuchas?tahun=" + tahun;
             } else {
                 api_ =
-                    "https://lpse-gresik.cloud/api/datapakets/getpuchas?tahun=" +
+                    "https://lpse.gempa-iot.masuk.id/api/datapakets/getpuchas?tahun=" +
                     tahun +
                     "&sk=" +
                     satuan;
             }
 
-            //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+            //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
             const response = await fetch(api_);
             const barChatData = await response.json();

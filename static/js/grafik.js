@@ -74,16 +74,16 @@ async function getChartSwakelola(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getswakelola?tahun=" + tahun;
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getswakelola?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getswakelola?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getswakelola?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -177,16 +177,16 @@ async function Seleksi(tahun, datasatuan) {
 async function getChartSeleksi(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
-    api_ = "https://lpse-gresik.cloud/api/datapakets/getseleksi?tahun=" + tahun;
+    api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getseleksi?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getseleksi?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getseleksi?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -280,16 +280,16 @@ async function Tender(tahun, datasatuan) {
 async function getChartTender(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
-    api_ = "https://lpse-gresik.cloud/api/datapakets/getender?tahun=" + tahun;
+    api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getender?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getender?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getender?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -386,17 +386,17 @@ async function getChartLangsung(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getpengadaanlangsung?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getpengadaanlangsung?tahun=" +
       tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getpengadaanlangsung?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getpengadaanlangsung?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -490,16 +490,16 @@ async function Purchase(tahun, datasatuan) {
 async function getChartPurchase(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
-    api_ = "https://lpse-gresik.cloud/api/datapakets/getpuchas?tahun=" + tahun;
+    api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getpuchas?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getpuchas?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getpuchas?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -593,16 +593,16 @@ async function Kecuali(tahun, datasatuan) {
 async function getKecuali(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
-    api_ = "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" + tahun;
+    api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getkecuali?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getkecuali?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();
@@ -697,16 +697,16 @@ async function Pl(tahun, datasatuan) {
 async function getPl(tahun, satuan) {
   var api_ = "";
   if (satuan == "SELURUH SATUAN KERJA") {
-    api_ = "https://lpse-gresik.cloud/api/datapakets/getpl?tahun=" + tahun;
+    api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getpl?tahun=" + tahun;
   } else {
     api_ =
-      "https://lpse-gresik.cloud/api/datapakets/getpl?tahun=" +
+      "https://lpse.gempa-iot.masuk.id/api/datapakets/getpl?tahun=" +
       tahun +
       "&sk=" +
       satuan;
   }
 
-  //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+  //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
   const response = await fetch(api_);
   const barChatData = await response.json();

@@ -371,16 +371,16 @@
         async function getKecuali(tahun, satuan) {
             var api_ = "";
             if (satuan == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" + tahun;
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getkecuali?tahun=" + tahun;
             } else {
                 api_ =
-                    "https://lpse-gresik.cloud/api/datapakets/getkecuali?tahun=" +
+                    "https://lpse.gempa-iot.masuk.id/api/datapakets/getkecuali?tahun=" +
                     tahun +
                     "&sk=" +
                     satuan;
             }
 
-            //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+            //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
             const response = await fetch(api_);
             const barChatData = await response.json();
@@ -403,10 +403,10 @@
         function getData(text, dinas) {
             var api_ = ""
             if (dinas == "SELURUH SATUAN KERJA") {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian'
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian'
             }
             else {
-                api_ = "https://lpse-gresik.cloud/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian' + '&satuan=' + dinas
+                api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdata?tahun=" + text + '&metode=Pengecualian' + '&satuan=' + dinas
             }
 
             var table = $("#datatable").DataTable({

@@ -430,12 +430,12 @@
       // clear_data()
       var data_api = ''
       if (datasatuan == 'SELURUH SATUAN KERJA') {
-        data_api = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+        data_api = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
       }
       else {
-        data_api = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
+        data_api = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun + "&sk=" + datasatuan
       }
-      //fetch("https://lpse-gresik.cloud/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
+      //fetch("https://lpse.gempa-iot.masuk.id/api/datapakets/getstatic?tahun=" + tahun).then(res => res.json())
       fetch(data_api).then(res => res.json())
         .then(res => {
           str_body = ""
@@ -532,10 +532,10 @@
 
       var api_ = ""
       if (satuan == "SELURUH SATUAN KERJA") {
-        api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+        api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
       }
       else {
-        api_ = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun + '&sk=' + satuan
+        api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun + '&sk=' + satuan
       }
 
       //const apiUrl = "http://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun

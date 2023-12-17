@@ -221,8 +221,8 @@
 		}
 		function getData(koderup) {
 			//console.log('data x', koderup)
-			//const api_ = 'https://lpse-gresik.cloud/api/datapakets/getdetaildata?koderup='
-			const data_api = 'https://lpse-gresik.cloud/api/datapakets/getdetaildata?koderup='+koderup;
+			//const api_ = 'https://lpse.gempa-iot.masuk.id/api/datapakets/getdetaildata?koderup='
+			const data_api = 'https://lpse.gempa-iot.masuk.id/api/datapakets/getdetaildata?koderup='+koderup;
 			fetch(data_api).then(res => res.json())
 				.then(res => {
 					str_body = ""

@@ -300,13 +300,13 @@
       const getDataEfieinsiKontrak = (dinas, text) => {
         var api_ = ""
         if (dinas == "SELURUH SATUAN KERJA") {
-          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + text
+          api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensi?tahun=" + text
         }
         else {
-          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + text + '&sk=' + dinas
+          api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensi?tahun=" + text + '&sk=' + dinas
         }
 
-        //api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun="+text
+        //api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun="+text
         var table = $("#efisiensikontrak").DataTable({
           prerender: true,
           destroy: true,
@@ -341,13 +341,13 @@
       function getData(dinas, text) {
         var api_ = ""
         if (dinas == "SELURUH SATUAN KERJA") {
-          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + text
+          api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun=" + text
         }
         else {
-          api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + text + '&sk=' + dinas
+          api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun=" + text + '&sk=' + dinas
         }
 
-        //api_ = "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun="+text
+        //api_ = "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun="+text
         var table = $("#efisiensi").DataTable({
           prerender: true,
           destroy: true,
@@ -452,16 +452,16 @@
         var api_ = "";
         if (satuan == "SELURUH SATUAN KERJA") {
           api_ =
-            "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" + tahun;
+            "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensi?tahun=" + tahun;
         } else {
           api_ =
-            "https://lpse-gresik.cloud/api/datapakets/efisiensi?tahun=" +
+            "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensi?tahun=" +
             tahun +
             "&sk=" +
             satuan;
         }
 
-        //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+        //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
         const response = await fetch(api_);
         const barChatData = await response.json();
@@ -551,16 +551,16 @@
         var api_ = "";
         if (satuan == "SELURUH SATUAN KERJA") {
           api_ =
-            "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" + tahun;
+            "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun=" + tahun;
         } else {
           api_ =
-            "https://lpse-gresik.cloud/api/datapakets/efisiensihps?tahun=" +
+            "https://lpse.gempa-iot.masuk.id/api/datapakets/efisiensihps?tahun=" +
             tahun +
             "&sk=" +
             satuan;
         }
 
-        //const apiUrl = "https://lpse-gresik.cloud/api/datapakets/getdatametode?tahun=" + tahun
+        //const apiUrl = "https://lpse.gempa-iot.masuk.id/api/datapakets/getdatametode?tahun=" + tahun
 
         const response = await fetch(api_);
         const barChatData = await response.json();
